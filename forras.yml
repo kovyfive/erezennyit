@@ -1,0 +1,126 @@
+- mappa: Abarth
+  url: https://www.abarth.hu/ajanlatok
+  
+- mappa: Alfa Romeo
+  url: https://www.alfaromeo.hu/katalogus
+
+- mappa: Audi
+  url: https://gpt-live.porsche.co.at/hu/brand/A
+
+# csak konfigurator
+- mappa: BMW
+  url: 
+
+# egyedi url-ek
+- mappa: BYD
+  url: 
+  
+- mappa: Citroën
+  url: https://www.citroen.hu/hasznos-linkek/arlista.html
+
+# csak konfigurator
+- mappa: Cupra
+  url: 
+  
+- mappa: Dacia
+  url: https://www.dacia.hu/arlista-letoltes.html
+
+- mappa: Dongfeng
+  url: https://dongfengmotor.hu/modellek/
+  
+- mappa: DS Automobiles
+  url: https://www.dsautomobiles.hu/hasznos-linkek/arlista-katalogus.html
+  
+- mappa: Fiat
+  url: https://www.fiat.hu/vasarlas/katalogus
+  
+- mappa: Ford
+  url: https://www.ford.hu/erdeklodoknek/ismerje-meg/katalogusok
+
+- mappa: Honda
+  url: https://www.honda.hu/cars/get-a-brochure.html
+  
+- mappa: Hyundai
+  url: https://hyundai.hu/modellek/
+  
+- mappa: Isuzu
+  url: https://www.isuzu4x4.hu/autoink/arlista/
+  
+# nincs arlistas
+- mappa: Jaecoo
+  url: 
+
+- mappa: Jeep
+  url: https://www.jeep.hu/katalogus_arlista
+  
+- mappa: Kia
+  url: https://www.kia.com/hu/vasarlas/arlistak-katalogusok-adatok/
+  
+- mappa: Land Rover
+  url: https://www.landrover.hu/brochures
+
+- mappa: Lexus
+  url: https://www.lexus.hu/pricelists
+  
+- mappa: Mazda
+  url: https://www.mazda.hu/rlapok/katalogusok/
+  
+- mappa: Mercedes-Benz
+  url: https://www.mercedes-benz.hu/passengercars/finance/arlista.html
+
+- mappa: MG
+  url: https://www.mgmotor.hu/
+  
+# csak konfig
+- mappa: Mini
+  url:
+  
+- mappa: Mitsubishi
+  url: https://www.mitsubishi.hu/arak.html
+
+- mappa: Nissan
+  url: https://www.nissan.hu/katalogus-arlista.html
+  
+- mappa: Omoda
+  url: https://www.omodajaecoo.hu/omoda/ajanlatok/
+  
+- mappa: Opel
+  url: https://www.opel.hu/tools/arlistak-es-katalogusok.html
+  
+- mappa: Peugeot
+  url: https://www.peugeot.hu/valasszon-modellt/peugeot-kinalat.html
+
+- mappa: Renault
+  url: https://www.renault.hu/valasztek.html
+ 
+- mappa: Seat
+  url: https://www.seat.hu/ugyfeleknek/katalogusok-es-arlistak
+
+# csak konfig
+- mappa: Skoda
+  url: 
+  
+- mappa: SsangYong
+  url: https://www.kgmhungary.hu/autoink/arlista/
+  
+- mappa: Subaru
+  url: https://www.subaru.hu/arak.html
+
+# email feliratkozassal -.-
+- mappa: Suzuki
+  url: 
+
+# csak konfig
+- mappa: Tesla
+  url: 
+  
+- mappa: Toyota
+  url: https://www.toyota.hu/ajanlatok/kedvezmenyek#/chr
+  
+#csak konfig
+- mappa: Volkswagen
+  url: 
+
+#csak konfig
+- mappa: Volvo
+  url: 
