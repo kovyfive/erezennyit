@@ -1,0 +1,287 @@
+
+import {
+  CarModel,
+  EngineType,
+  TransmissionType,
+  DiscountTarget,
+  createEngineVariant,
+  createDefaultFeatures,
+  CarVariant
+} from '../model/model';
+
+// Define packages available for this model
+const commonPackages = [
+  { name: 'Parkoló csomag ALLURE', price: 550000 },
+  { name: 'Komfort csomag', price: 300000 },
+  { name: 'Komfort csomag SW', price: 370000 },
+  { name: 'Kulcs nélküli + Navigáció csomag', price: 410000 },
+  { name: 'Parkoló csomag GT SW', price: 560000 },
+  { name: 'Parkoló csomag GT', price: 390000 },
+  { name: 'Panoráma + HiFi csomag', price: 810000 },
+];
+
+// Define color options
+const colors = [
+    { name: 'Avatar kék metálfényezés', price: 0 },
+    { name: 'Okénite fehér metálfényezés', price: 150000 },
+    { name: 'Artense szürke metálfényezés', price: 150000 },
+    { name: 'Perla Nera fekete metálfényezés', price: 150000 },
+    { name: 'Selenium szürke metálfényezés', price: 150000 },
+    { name: 'Obsession kék metálfényezés', price: 0 },
+    { name: 'Elixir piros színezett lakkfényezés', price: 230000 },
+];
+
+const styleVariant: CarVariant = {
+  variantName: 'Style',
+  engineVariants: [
+    createEngineVariant(
+      'Hybrid 145 LE e-DCT6',
+      EngineType.FULL_HYBRID,
+      TransmissionType.HYBRID_AUTOMATIC,
+      12620000,
+      {
+        horsepower: 145,
+        consumption: 5,
+        acceleration0to100: 9,
+        topSpeed: 210,
+        fuelTankCapacity: 52,
+        cargoVolumeSeatsUp: 361,
+      },
+      11120000
+    ),
+    createEngineVariant(
+      'BlueHDi 130 LE EAT8',
+      EngineType.DIESEL,
+      TransmissionType.AUTOMATIC,
+      12530000,
+      {
+        horsepower: 131,
+        consumption: 5.1,
+        acceleration0to100: 10.6,
+        topSpeed: 207,
+        fuelTankCapacity: 53,
+        cargoVolumeSeatsUp: 412,
+      },
+      11030000
+    ),
+    createEngineVariant(
+        'Elektromos 156 LE (54 kWh)',
+        EngineType.EV,
+        TransmissionType.SINGLE_SPEED,
+        17950000,
+        {
+          horsepower: 156,
+          range: 419,
+          acceleration0to100: 9.8,
+          topSpeed: 170,
+          cargoVolumeSeatsUp: 361,
+        },
+        15650000
+      ),
+  ],
+  features: {
+    ...createDefaultFeatures(),
+    safety: {
+        ...createDefaultFeatures().safety,
+        laneKeepAssist: true,
+        cruiseControl: true,
+        isofix: true,
+    },
+    parkingAssistance: {
+        ...createDefaultFeatures().parkingAssistance,
+        rearParkingSensor: true,
+    },
+    convenience: {
+        ...createDefaultFeatures().convenience,
+        keylessStart: true,
+        frontPowerWindows: true,
+        rearPowerWindows: true,
+        dualZoneAC: true,
+    },
+    entertainment: {
+        ...createDefaultFeatures().entertainment,
+        wiredCarPlayAndroidAuto: true,
+    },
+    interiorExterior: {
+        ...createDefaultFeatures().interiorExterior,
+        spareTire: true,
+    }
+  },
+  customColorPrices: colors,
+  packages: commonPackages,
+  leatherSeatPackages: []
+};
+
+const allureVariant: CarVariant = {
+    variantName: 'Allure',
+    engineVariants: [
+      createEngineVariant(
+        'Hybrid 145 LE e-DCT6',
+        EngineType.FULL_HYBRID,
+        TransmissionType.HYBRID_AUTOMATIC,
+        13420000,
+        {
+          horsepower: 145,
+          consumption: 5,
+          acceleration0to100: 9,
+          topSpeed: 210,
+          fuelTankCapacity: 52,
+          cargoVolumeSeatsUp: 361,
+        },
+        11620000
+      ),
+      createEngineVariant(
+        'BlueHDi 130 LE EAT8',
+        EngineType.DIESEL,
+        TransmissionType.AUTOMATIC,
+        13320000,
+        {
+          horsepower: 131,
+          consumption: 5.1,
+          acceleration0to100: 10.6,
+          topSpeed: 207,
+          fuelTankCapacity: 53,
+          cargoVolumeSeatsUp: 412,
+        },
+        11520000
+      ),
+      createEngineVariant(
+          'PHEV 195 LE e-DCT7',
+          EngineType.PHEV,
+          TransmissionType.HYBRID_AUTOMATIC,
+          17510000,
+          {
+            horsepower: 195,
+            consumption: 1.2,
+            acceleration0to100: 7.6,
+            topSpeed: 225,
+            fuelTankCapacity: 42,
+            cargoVolumeSeatsUp: 361,
+            range: 85,
+          },
+          16010000
+        ),
+      createEngineVariant(
+          'Elektromos 156 LE (54 kWh)',
+          EngineType.EV,
+          TransmissionType.SINGLE_SPEED,
+          18810000,
+          {
+            horsepower: 156,
+            range: 419,
+            acceleration0to100: 9.8,
+            topSpeed: 170,
+            cargoVolumeSeatsUp: 361,
+          },
+          16510000
+        ),
+    ],
+    features: {
+      ...styleVariant.features,
+      parkingAssistance: {
+          ...styleVariant.features.parkingAssistance,
+          frontParkingSensor: true,
+          parkingCameras: true,
+      },
+    },
+    customColorPrices: colors,
+    packages: commonPackages,
+    leatherSeatPackages: []
+  };
+
+  const gtVariant: CarVariant = {
+    variantName: 'GT',
+    engineVariants: [
+      createEngineVariant(
+        'Hybrid 145 LE e-DCT6',
+        EngineType.FULL_HYBRID,
+        TransmissionType.HYBRID_AUTOMATIC,
+        14630000,
+        {
+          horsepower: 145,
+          consumption: 5,
+          acceleration0to100: 9,
+          topSpeed: 210,
+          fuelTankCapacity: 52,
+          cargoVolumeSeatsUp: 361,
+        },
+        12630000
+      ),
+      createEngineVariant(
+        'BlueHDi 130 LE EAT8',
+        EngineType.DIESEL,
+        TransmissionType.AUTOMATIC,
+        14540000,
+        {
+          horsepower: 131,
+          consumption: 5.1,
+          acceleration0to100: 10.6,
+          topSpeed: 207,
+          fuelTankCapacity: 53,
+          cargoVolumeSeatsUp: 412,
+        },
+        12540000
+      ),
+      createEngineVariant(
+          'PHEV 195 LE e-DCT7',
+          EngineType.PHEV,
+          TransmissionType.HYBRID_AUTOMATIC,
+          18750000,
+          {
+            horsepower: 195,
+            consumption: 1.2,
+            acceleration0to100: 7.6,
+            topSpeed: 225,
+            fuelTankCapacity: 42,
+            cargoVolumeSeatsUp: 361,
+            range: 85,
+          },
+          17250000
+        ),
+      createEngineVariant(
+          'Elektromos 156 LE (54 kWh)',
+          EngineType.EV,
+          TransmissionType.SINGLE_SPEED,
+          19780000,
+          {
+            horsepower: 156,
+            range: 419,
+            acceleration0to100: 9.8,
+            topSpeed: 170,
+            cargoVolumeSeatsUp: 361,
+          },
+          17480000
+        ),
+    ],
+    features: {
+        ...allureVariant.features,
+        safety: {
+            ...allureVariant.features.safety,
+            smartCruiseControlWithStopAndGo: true,
+        },
+        convenience: {
+            ...allureVariant.features.convenience,
+            keylessStart: true,
+        },
+        interiorExterior: {
+            ...allureVariant.features.interiorExterior,
+            metalPedals: true,
+        }
+    },
+    customColorPrices: colors,
+    packages: commonPackages,
+    leatherSeatPackages: []
+  };
+
+const modelName = new CarModel(
+  'Peugeot',
+  '308',
+  DiscountTarget.PRIVATE,
+  [
+    styleVariant,
+    allureVariant,
+    gtVariant
+  ]
+);
+
+export default modelName;
