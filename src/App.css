@@ -22,3 +22,52 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Test Section Styles */
+.test-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+}
+
+.test-section button {
+  margin: 1rem 0;
+  padding: 0.6em 1.2em;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.test-section button:hover {
+  background-color: #357abd;
+}
+
+.test-results {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.test-results.success {
+  background-color: #e6f7e6;
+  color: #2e7d32;
+}
+
+.test-results.error {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.test-results ul {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.test-results li {
+  margin: 0.5rem 0;
+}
