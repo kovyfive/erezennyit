@@ -442,7 +442,7 @@ const platinumGtLineVariant: CarVariant = {
 };
 
 // Create and export the Kia Ceed SW model
-const kiaCeedSw = new CarModel(
+const kiaCeedSwTest = new CarModel(
   'Kia',
   'Ceed SW',
   DiscountTarget.BOTH,
@@ -455,4 +455,4 @@ const kiaCeedSw = new CarModel(
   ]
 );
 
-export default kiaCeedSw;
+export default kiaCeedSwTest;

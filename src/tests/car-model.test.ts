@@ -1,5 +1,5 @@
 import { CarModel, NOT_AVAILABLE } from '../model/model';
-import kiaCeedSw from '../data/kia-ceed-sw';
+import kiaCeedSwTest from '../data/test';
 
 /**
  * Function to validate a car model
@@ -197,13 +197,13 @@ export function testCarModels(): { success: boolean, errors: string[], message: 
   let allErrors: string[] = [];
   
   // Test the Kia Ceed SW model
-  const ceedErrors = validateCarModel(kiaCeedSw);
+  const ceedErrors = validateCarModel(kiaCeedSwTest);
   if (ceedErrors.length > 0) {
     allErrors = [...allErrors, ...ceedErrors.map(err => `[Kia Ceed SW]: ${err}`)];
   }
   
   // Test price calculation
-  const pricingErrors = testPriceCalculation(kiaCeedSw);
+  const pricingErrors = testPriceCalculation(kiaCeedSwTest);
   if (pricingErrors.length > 0) {
     allErrors = [...allErrors, ...pricingErrors.map(err => `[Kia Ceed SW Price Calculation]: ${err}`)];
   }
