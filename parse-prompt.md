@@ -127,69 +127,135 @@ Group features into these categories:
    - All prices should be in HUF (Hungarian Forint).
    - Ensure base prices include registration fees if mentioned.
 
-## Output Format
+6. **Using `createDefaultFeatures()`**:
+   - The `createDefaultFeatures()` function creates a complete features structure with all values set to `false`.
+   - Always start with this default structure using spread syntax: `...createDefaultFeatures()`.
+   - Then override only the specific features that differ from the default.
+   - This ensures no features are missed and keeps the code clean.
 
-After analyzing all PDFs, organize the output as a TypeScript object with this structure, and save it in /src/data/{manufacturer}-{model}.ts
+
+## Output Format & Code Structure
+
+After analyzing all PDFs, you'll create a TypeScript file at `/src/data/{manufacturer}-{model}.ts`. Use helper functions and reusable components to keep the code concise and maintainable.
+
+### Step 1: Define Reusable Components
+
+Start by defining common packages, leather options, and color options that can be reused across multiple variants:
 
 ```typescript
-const carModel = new CarModel(
-  "Manufacturer", // e.g., "Kia"
-  "ModelName", // e.g., "Ceed SW"
-  DiscountTarget.BOTH, // or PRIVATE, BUSINESS, NONE
-  [
-    // Variant 1 (e.g., Silver)
-    {
-      variantName: "Variant1Name",
-      engineVariants: [
-        // Engine option 1
-        {
-          listedEngineName: "Engine name as in document",
-          engineType: EngineType.BENZIN, // or other type
-          transmissionType: TransmissionType.MANUAL,
-          automaticPrice: 800000, // optional, if automatic is an extra-cost option
-          basePrice: 7990000,
-          discountedPrice: 7490000, // optional
-          technicalSpecs: {
-            engineDisplacement: 998,
-            horsepower: 100,
-            consumption: 5.2,
-            acceleration0to100: 11.4,
-            topSpeed: 183,
-            fuelTankCapacity: 50,
-            cargoVolumeSeatsUp: 625,
-            range: 961,
-            speakerCount: 6
-          }
-        },
-        // Additional engine options...
-      ],
-      features: {
-        safety: {
-          laneKeepAssist: true,
-          cruiseControl: true,
-          smartCruiseControl: "Safety Package",
-          smartCruiseControlWithStopAndGo: false,
-          blindSpotCollisionAvoidanceAssist: false,
-          isofix: true
-        },
-        // other feature groups...
+import {
+  CarModel,
+  EngineType,
+  TransmissionType,
+  DiscountTarget,
+  createEngineVariant,
+  createDefaultFeatures,
+  CarVariant
+} from '../model/model';
+
+// Define packages available for this model
+const commonPackages = [
+  { name: 'Comfort Package', price: 200000 }, // Example: AC, heated seats
+  { name: 'Safety Package', price: 180000 },  // Example: ADAS features
+  { name: 'Tech Package', price: 300000 },    // Example: Advanced tech features
+  // Add any other common packages found in the flyer
+];
+
+// Define leather seat options
+const leatherOptions = [
+  { name: 'Black Leather', price: 350000 },
+  { name: 'Beige Leather', price: 350000 },
+  // Add any other leather options found in the flyer
+];
+
+// Define color options
+const colors = [
+  { name: 'White Pearl', price: 150000 },
+  { name: 'Metallic Black', price: 150000 },
+  // Add all color options found in the flyer with their prices
+];
+```
+
+### Step 2: Create Each Variant
+
+For each variant (e.g., Silver, Gold), create a CarVariant object:
+
+```typescript
+// Create the Silver variant
+const silverVariant: CarVariant = {
+  variantName: 'Silver',
+  engineVariants: [
+    // Use createEngineVariant helper function for each engine option
+    createEngineVariant(
+      '100 T-GDI',                     // Listed engine name exactly as in document
+      EngineType.BENZIN,               // Engine type
+      TransmissionType.MANUAL,         // Base transmission type
+      7990000,                         // Base price
+      {                                // Technical specifications
+        engineDisplacement: 998,
+        horsepower: 100,
+        consumption: 5.2,
+        acceleration0to100: 11.4,
+        topSpeed: 183,
+        fuelTankCapacity: 50,
+        cargoVolumeSeatsUp: 625,
+        range: 961,
+        speakerCount: 6
       },
-      customColorPrices: [
-        { name: "White Pearl", price: 150000 },
-        // other colors...
-      ],
-      packages: [
-        { name: "Safety Package", price: 180000 },
-        // other packages...
-      ],
-      leatherSeatPackages: [
-        { name: "Black Leather", price: 350000 },
-        // other leather options...
-      ]
+      7490000,                         // Discounted price 
+      800000                           // Automatic transmission price 
+    ),
+    // Add additional engine variants
+  ],
+  features: {
+    // Start with default features (all set to false) and override as needed
+    ...createDefaultFeatures(),
+    safety: {
+      laneKeepAssist: true,                     // Included by default
+      cruiseControl: true,                      // Included by default
+      smartCruiseControl: 'Safety Package',     // Available with package
+      smartCruiseControlWithStopAndGo: false,   // Not available
+      blindSpotCollisionAvoidanceAssist: false, // Not available
+      isofix: true                              // Included by default
     },
-    // Additional variants...
+    // Override other feature categories as needed
+    parkingAssistance: {
+      // Override default values based on flyer information
+      reversingRadar: true,
+      // ...other parking features
+    },
+    // ... other feature categories with their specific values
+  },
+  // Reference the common components defined earlier
+  customColorPrices: colors,
+  packages: commonPackages,
+  leatherSeatPackages: leatherOptions
+};
+
+// Repeat for each variant (Gold, Gold Sport, Platinum, etc.)
+// const goldVariant: CarVariant = { ... }
+```
+
+### Step 3: Create the Car Model
+
+Finally, create and export the car model:
+
+```typescript
+// Create and export the complete car model
+const modelName = new CarModel(
+  'Manufacturer',          // e.g., "Kia"
+  'Model Name',            // e.g., "Ceed SW"
+  DiscountTarget.BOTH,     // or PRIVATE, BUSINESS, NONE
+  [
+    silverVariant,
+    goldVariant,
+    goldSportVariant,
+    platinumVariant,
+    platinumGtLineVariant
   ]
 );
+
+export default modelName;
 ```
 
 Review the extracted data for accuracy and completeness before finalizing the output. Ensure all variant and engine combinations documented in the PDFs are represented in the structured data.
@@ -208,3 +274,44 @@ Before finalizing your output, verify:
 8. ✓ All prices are in the correct currency and include required fees
 
 If you're uncertain about any information, explain your reasoning and mark the field with "N/A" to indicate further research is needed.
+
+## Practical Example: Feature Progression Across Variants
+
+When creating multiple variants of increasing trim levels, follow this pattern for feature progression:
+
+### Safety Feature Example:
+```typescript
+// Base variant (Silver)
+safety: {
+  laneKeepAssist: true,                     // Basic feature included
+  cruiseControl: true,                      // Basic feature included
+  smartCruiseControl: 'Safety Package',     // Available in package
+  smartCruiseControlWithStopAndGo: false,   // Not available
+  blindSpotCollisionAvoidanceAssist: false, // Not available
+  isofix: true                              // Basic feature included
+}
+
+// Mid variant (Gold) - typically includes more standard features
+safety: {
+  laneKeepAssist: true,                     // Still included
+  cruiseControl: true,                      // Still included
+  smartCruiseControl: true,                 // Now standard (not in package)
+  smartCruiseControlWithStopAndGo: 'Safety Package', // Now available in package
+  blindSpotCollisionAvoidanceAssist: false, // Still not available
+  isofix: true                              // Still included
+}
+
+// Top variant (Platinum) - typically includes most features as standard
+safety: {
+  laneKeepAssist: true,                     // Still included
+  cruiseControl: true,                      // Still included
+  smartCruiseControl: true,                 // Still included
+  smartCruiseControlWithStopAndGo: true,    // Now standard
+  blindSpotCollisionAvoidanceAssist: true,  // Now included
+  isofix: true                              // Still included
+}
+```
+
+This pattern shows logical feature progression from lower to higher trim levels, which typically follows car manufacturers' feature packaging strategy.
+
+Remember to focus on the differences between variants - a higher trim usually builds upon the features of lower trims, either by including package features as standard or by adding more premium features.
