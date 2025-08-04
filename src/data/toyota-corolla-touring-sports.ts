@@ -383,7 +383,6 @@ const comfortVariant: CarVariant = {
         EngineType.FULL_HYBRID,
         TransmissionType.HYBRID_AUTOMATIC,
         17200000,
-.
         {
           horsepower: 196,
           consumption: 4.5,

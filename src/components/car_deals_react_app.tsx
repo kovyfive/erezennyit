@@ -1,315 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { Filter, RotateCcw, Car, DollarSign } from 'lucide-react';
+import { loadAllCarModels } from '../utils/carModelsLoader';
+import { NOT_AVAILABLE } from '../model/model';
 
-// Data model constants and types
-const NOT_AVAILABLE = "N/A";
-
-const EngineType = {
-  DIESEL: "diesel",
-  BENZIN: "benzin",
-  MILD_HYBRID: "mild-hybrid",
-  FULL_HYBRID: "full-hybrid",
-  PHEV: "phev",
-  EV: "ev"
-};
-
-const TransmissionType = {
-  MANUAL: "manual",
-  AUTOMATIC: "automatic",
-  HYBRID_AUTOMATIC: "hybrid-automatic",
-  SINGLE_SPEED: "single-speed",
-  NOT_AVAILABLE: "N/A"
-};
-
-const DiscountTarget = {
-  PRIVATE: "private",
-  BUSINESS: "business",
-  BOTH: "both",
-  NONE: "none"
-};
-
-// Sample car data
-const sampleCars = [
-  {
-    manufacturer: "Toyota",
-    modelName: "Corolla",
-    discountTarget: DiscountTarget.BOTH,
-    variants: [
-      {
-        variantName: "Active",
-        engineVariants: [
-          {
-            listedEngineName: "1.6 Benzin",
-            engineType: EngineType.BENZIN,
-            transmissionType: TransmissionType.MANUAL,
-            automaticPrice: 2500,
-            technicalSpecs: {
-              engineDisplacement: 1.6,
-              horsepower: 132,
-              consumption: 6.2,
-              acceleration0to100: 10.2,
-              topSpeed: 180,
-              fuelTankCapacity: 50,
-              cargoVolumeSeatsUp: 470,
-              range: 800,
-              speakerCount: 6
-            },
-            basePrice: 28000,
-            discountedPrice: 25500
-          }
-        ],
-        features: {
-          safety: {
-            laneKeepAssist: true,
-            cruiseControl: true,
-            smartCruiseControl: "Safety Pack",
-            smartCruiseControlWithStopAndGo: "Safety Pack",
-            blindSpotCollisionAvoidanceAssist: false,
-            isofix: true
-          },
-          parkingAssistance: {
-            reversingRadar: true,
-            frontParkingSensor: "Parking Pack",
-            rearParkingSensor: true,
-            parkingCameras: "Parking Pack",
-            parkingCameras360View: false,
-            semiOrFullAutomaticParkingAssistant: "Parking Pack",
-            electricParkingBrake: true
-          },
-          convenience: {
-            keylessStart: true,
-            wirelessPhoneCharger: "Tech Pack",
-            powerTailgate: false,
-            powerTailgateWithFootSensor: false,
-            frontPowerWindows: true,
-            rearPowerWindows: true,
-            heatedFrontSeats: "Comfort Pack",
-            heatedRearSeats: false,
-            dualZoneAC: "Comfort Pack",
-            headUpDisplay: false
-          },
-          entertainment: {
-            premiumSpeaker: "Audio Pack",
-            wiredCarPlayAndroidAuto: true,
-            wirelessCarPlayAndroidAuto: "Tech Pack"
-          },
-          interiorExterior: {
-            spareTire: true,
-            metalPedals: false,
-            paddleShifters: false,
-            velourFloorMats: true,
-            rubberMats: "Weather Pack",
-            tintedRearWindows: "Style Pack",
-            roofRails: false
-          }
-        },
-        customColorPrices: [
-          { name: "Pearl White", price: 800 },
-          { name: "Metallic Black", price: 600 }
-        ],
-        packages: [
-          { name: "Safety Pack", price: 1200 },
-          { name: "Parking Pack", price: 800 },
-          { name: "Tech Pack", price: 1500 },
-          { name: "Comfort Pack", price: 900 },
-          { name: "Audio Pack", price: 600 },
-          { name: "Weather Pack", price: 300 },
-          { name: "Style Pack", price: 400 }
-        ],
-        leatherSeatPackages: [
-          { name: "Leather Interior", price: 2000 }
-        ]
-      }
-    ]
-  },
-  {
-    manufacturer: "Volkswagen",
-    modelName: "Golf",
-    discountTarget: DiscountTarget.PRIVATE,
-    variants: [
-      {
-        variantName: "Life",
-        engineVariants: [
-          {
-            listedEngineName: "1.5 TSI",
-            engineType: EngineType.BENZIN,
-            transmissionType: TransmissionType.MANUAL,
-            automaticPrice: 2200,
-            technicalSpecs: {
-              engineDisplacement: 1.5,
-              horsepower: 150,
-              consumption: 5.8,
-              acceleration0to100: 8.5,
-              topSpeed: 200,
-              fuelTankCapacity: 50,
-              cargoVolumeSeatsUp: 380,
-              range: 860,
-              speakerCount: 8
-            },
-            basePrice: 32000,
-            discountedPrice: 29800
-          }
-        ],
-        features: {
-          safety: {
-            laneKeepAssist: true,
-            cruiseControl: true,
-            smartCruiseControl: true,
-            smartCruiseControlWithStopAndGo: "IQ.DRIVE Pack",
-            blindSpotCollisionAvoidanceAssist: "IQ.DRIVE Pack",
-            isofix: true
-          },
-          parkingAssistance: {
-            reversingRadar: true,
-            frontParkingSensor: true,
-            rearParkingSensor: true,
-            parkingCameras: "Park Assist Pack",
-            parkingCameras360View: "Park Assist Pack",
-            semiOrFullAutomaticParkingAssistant: "Park Assist Pack",
-            electricParkingBrake: true
-          },
-          convenience: {
-            keylessStart: true,
-            wirelessPhoneCharger: "Convenience Pack",
-            powerTailgate: "Convenience Pack",
-            powerTailgateWithFootSensor: false,
-            frontPowerWindows: true,
-            rearPowerWindows: true,
-            heatedFrontSeats: true,
-            heatedRearSeats: "Comfort Pack",
-            dualZoneAC: true,
-            headUpDisplay: "Digital Pack"
-          },
-          entertainment: {
-            premiumSpeaker: "Sound Pack",
-            wiredCarPlayAndroidAuto: true,
-            wirelessCarPlayAndroidAuto: true
-          },
-          interiorExterior: {
-            spareTire: true,
-            metalPedals: "Sport Pack",
-            paddleShifters: "Sport Pack",
-            velourFloorMats: true,
-            rubberMats: "Weather Pack",
-            tintedRearWindows: true,
-            roofRails: false
-          }
-        },
-        customColorPrices: [
-          { name: "Kings Red", price: 900 },
-          { name: "Deep Black Pearl", price: 700 }
-        ],
-        packages: [
-          { name: "IQ.DRIVE Pack", price: 1800 },
-          { name: "Park Assist Pack", price: 1200 },
-          { name: "Convenience Pack", price: 1100 },
-          { name: "Comfort Pack", price: 800 },
-          { name: "Digital Pack", price: 1000 },
-          { name: "Sound Pack", price: 800 },
-          { name: "Sport Pack", price: 600 },
-          { name: "Weather Pack", price: 250 }
-        ],
-        leatherSeatPackages: [
-          { name: "Vienna Leather", price: 2200 }
-        ]
-      }
-    ]
-  },
-  {
-    manufacturer: "BMW",
-    modelName: "3 Series",
-    discountTarget: DiscountTarget.BUSINESS,
-    variants: [
-      {
-        variantName: "320i",
-        engineVariants: [
-          {
-            listedEngineName: "2.0 TwinPower Turbo",
-            engineType: EngineType.BENZIN,
-            transmissionType: TransmissionType.AUTOMATIC,
-            technicalSpecs: {
-              engineDisplacement: 2.0,
-              horsepower: 184,
-              consumption: 6.5,
-              acceleration0to100: 7.1,
-              topSpeed: 230,
-              fuelTankCapacity: 59,
-              cargoVolumeSeatsUp: 480,
-              range: 900,
-              speakerCount: 12
-            },
-            basePrice: 45000,
-            discountedPrice: 42000
-          }
-        ],
-        features: {
-          safety: {
-            laneKeepAssist: true,
-            cruiseControl: true,
-            smartCruiseControl: true,
-            smartCruiseControlWithStopAndGo: true,
-            blindSpotCollisionAvoidanceAssist: "Driving Assistant",
-            isofix: true
-          },
-          parkingAssistance: {
-            reversingRadar: true,
-            frontParkingSensor: true,
-            rearParkingSensor: true,
-            parkingCameras: "Parking Assistant",
-            parkingCameras360View: "Parking Assistant",
-            semiOrFullAutomaticParkingAssistant: "Parking Assistant",
-            electricParkingBrake: true
-          },
-          convenience: {
-            keylessStart: true,
-            wirelessPhoneCharger: true,
-            powerTailgate: "Comfort Access",
-            powerTailgateWithFootSensor: "Comfort Access",
-            frontPowerWindows: true,
-            rearPowerWindows: true,
-            heatedFrontSeats: true,
-            heatedRearSeats: "Comfort Package",
-            dualZoneAC: true,
-            headUpDisplay: "Live Cockpit Pro"
-          },
-          entertainment: {
-            premiumSpeaker: "Harman Kardon",
-            wiredCarPlayAndroidAuto: true,
-            wirelessCarPlayAndroidAuto: true
-          },
-          interiorExterior: {
-            spareTire: false,
-            metalPedals: "M Sport Package",
-            paddleShifters: "M Sport Package",
-            velourFloorMats: true,
-            rubberMats: "All Weather Package",
-            tintedRearWindows: true,
-            roofRails: false
-          }
-        },
-        customColorPrices: [
-          { name: "Alpine White", price: 0 },
-          { name: "Mineral Grey", price: 1200 },
-          { name: "Storm Bay", price: 1500 }
-        ],
-        packages: [
-          { name: "Driving Assistant", price: 2200 },
-          { name: "Parking Assistant", price: 1800 },
-          { name: "Comfort Access", price: 1400 },
-          { name: "Comfort Package", price: 1600 },
-          { name: "Live Cockpit Pro", price: 2500 },
-          { name: "Harman Kardon", price: 1200 },
-          { name: "M Sport Package", price: 3000 },
-          { name: "All Weather Package", price: 400 }
-        ],
-        leatherSeatPackages: [
-          { name: "Dakota Leather", price: 2800 },
-          { name: "Vernasca Leather", price: 3500 }
-        ]
-      }
-    ]
-  }
-];
+const sampleCars = Object.values(await loadAllCarModels());
 
 // Helper function to get all car combinations
 const getAllCarCombinations = (cars) => {
@@ -449,7 +143,7 @@ const CarDealsComparison = () => {
       case 'modelName': return car.modelName;
       case 'variantName': return variant.variantName;
       case 'engineName': return engine.listedEngineName;
-      case 'basePrice': return `€${engine.basePrice.toLocaleString()}`;
+      case 'basePrice': return `${engine.basePrice.toLocaleString()} Ft`;
       case 'calculatedPrice': 
         try {
           const result = car.fullCar.calculatePrice?.(variant.variantName, engine.listedEngineName, selectedFeatures);
@@ -457,7 +151,7 @@ const CarDealsComparison = () => {
             return (
               <div>
                 <div className="font-bold text-green-600">
-                  €{result.basePrice.toLocaleString()}
+                  {result.basePrice.toLocaleString()} Ft
                 </div>
                 {result.requiredPackages?.length > 0 && (
                   <div className="text-xs text-blue-600 mt-1">
@@ -469,7 +163,7 @@ const CarDealsComparison = () => {
           }
           return 'Not available with selected features';
         } catch (e) {
-          return `€${engine.basePrice.toLocaleString()}`;
+          return `${engine.basePrice.toLocaleString()} Ft`;
         }
     }
 
@@ -594,10 +288,10 @@ const CarDealsComparison = () => {
                 {car.engine.discountedPrice && (
                   <div className="mt-2">
                     <span className="line-through text-red-200 text-sm">
-                      €{car.engine.basePrice.toLocaleString()}
+                      {car.engine.basePrice.toLocaleString()} Ft
                     </span>
                     <div className="text-green-200 font-bold">
-                      €{car.engine.discountedPrice.toLocaleString()}
+                      {car.engine.discountedPrice.toLocaleString()} Ft
                     </div>
                   </div>
                 )}
