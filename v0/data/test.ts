@@ -1,12 +1,6 @@
-import {
-  CarModel,
-  EngineType,
-  TransmissionType,
-  DiscountTarget,
-  createEngineVariant,
-  createDefaultFeatures,
-  CarVariant
-} from '../model/model';
+import { CarModel, EngineType, TransmissionType, DiscountTarget, CarVariant } from '../model/model';
+import { createCarModel } from '../model/model-helpers';
+import { createEngineVariant, createDefaultFeatures } from '../model/model-helpers';
 
 // Define packages available for this model
 const commonPackages = [
@@ -442,7 +436,7 @@ const platinumGtLineVariant: CarVariant = {
 };
 
 // Create and export the Kia Ceed SW model
-const kiaCeedSwTest = new CarModel(
+const kiaCeedSwTest = createCarModel(
   'Kia',
   'Ceed SW',
   DiscountTarget.BOTH,

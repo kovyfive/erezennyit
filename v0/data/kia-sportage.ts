@@ -1,13 +1,7 @@
 
-import {
-  CarModel,
-  EngineType,
-  TransmissionType,
-  DiscountTarget,
-  createEngineVariant,
-  createDefaultFeatures,
-  CarVariant
-} from '../model/model';
+import { CarModel, EngineType, TransmissionType, DiscountTarget, CarVariant } from '../model/model';
+import { createCarModel } from '../model/model-helpers';
+import { createEngineVariant, createDefaultFeatures } from '../model/model-helpers';
 
 const colors = [
     { name: 'Metál', price: 175000 },
@@ -126,7 +120,7 @@ const goldVariant: CarVariant = {
     leatherSeatPackages: []
   };
 
-const modelName = new CarModel(
+const modelName = createCarModel(
   'Kia',
   'Sportage',
   DiscountTarget.PRIVATE,

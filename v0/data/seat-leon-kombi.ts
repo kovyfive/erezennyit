@@ -1,13 +1,7 @@
 
-import {
-  CarModel,
-  EngineType,
-  TransmissionType,
-  DiscountTarget,
-  createEngineVariant,
-  createDefaultFeatures,
-  CarVariant
-} from '../model/model';
+import { CarModel, EngineType, TransmissionType, DiscountTarget, CarVariant } from '../model/model';
+import { createCarModel } from '../model/model-helpers';
+import { createEngineVariant, createDefaultFeatures } from '../model/model-helpers';
 
 const colors = [
     { name: 'Fiord kék', price: 0 },
@@ -216,7 +210,7 @@ const styleVariant: CarVariant = {
   };
 
 
-const modelName = new CarModel(
+const modelName = createCarModel(
   'Seat',
   'Leon Kombi',
   DiscountTarget.NONE,

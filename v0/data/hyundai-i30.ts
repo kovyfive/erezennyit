@@ -1,13 +1,7 @@
 
-import {
-  CarModel,
-  EngineType,
-  TransmissionType,
-  DiscountTarget,
-  createEngineVariant,
-  createDefaultFeatures,
-  CarVariant
-} from '../model/model';
+import { CarModel, EngineType, TransmissionType, DiscountTarget, CarVariant } from '../model/model';
+import { createCarModel } from '../model/model-helpers';
+import { createEngineVariant, createDefaultFeatures } from '../model/model-helpers';
 
 const colors = [
     { name: 'Fehér', price: 100000 },
@@ -138,7 +132,7 @@ const trendKombiVariant: CarVariant = {
     leatherSeatPackages: []
   };
 
-const modelName = new CarModel(
+const modelName = createCarModel(
   'Hyundai',
   'i30',
   DiscountTarget.NONE,

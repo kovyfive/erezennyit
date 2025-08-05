@@ -1,13 +1,7 @@
 
-import {
-  CarModel,
-  EngineType,
-  TransmissionType,
-  DiscountTarget,
-  createEngineVariant,
-  createDefaultFeatures,
-  CarVariant
-} from '../model/model';
+import { CarModel, EngineType, TransmissionType, DiscountTarget, CarVariant } from '../model/model';
+import { createCarModel } from '../model/model-helpers';
+import { createEngineVariant, createDefaultFeatures } from '../model/model-helpers';
 
 const colors = [
     { name: 'Arktis fehér', price: 0 },
@@ -102,7 +96,7 @@ const gsVariant: CarVariant = {
   };
 
 
-const modelName = new CarModel(
+const modelName = createCarModel(
   'Opel',
   'Grandland',
   DiscountTarget.NONE,

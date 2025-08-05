@@ -1,13 +1,7 @@
 
-import {
-  CarModel,
-  EngineType,
-  TransmissionType,
-  DiscountTarget,
-  createEngineVariant,
-  createDefaultFeatures,
-  CarVariant
-} from '../model/model';
+import { CarModel, EngineType, TransmissionType, DiscountTarget, CarVariant } from '../model/model';
+import { createCarModel } from '../model/model-helpers';
+import { createEngineVariant, createDefaultFeatures } from '../model/model-helpers';
 
 const colors = [
     { name: 'Atlas White', price: 100000 },
@@ -160,7 +154,7 @@ const primeVariant: CarVariant = {
   };
 
 
-const modelName = new CarModel(
+const modelName = createCarModel(
   'Hyundai',
   'KONA',
   DiscountTarget.NONE,
