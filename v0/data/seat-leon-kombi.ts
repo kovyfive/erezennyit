@@ -37,8 +37,8 @@ const jubileumVariant: CarVariant = {
     },
     parkingAssistance: {
         ...createDefaultFeatures().parkingAssistance,
-        frontParkingSensor: true,
-        rearParkingSensor: true,
+        frontParkingSensors: true,
+        rearParkingSensors: true,
     },
     convenience: {
         ...createDefaultFeatures().convenience,

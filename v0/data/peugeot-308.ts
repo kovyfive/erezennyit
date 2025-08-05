@@ -1,7 +1,7 @@
 
 import { CarModel, EngineType, TransmissionType, DiscountTarget, CarVariant } from '../model/model';
-import { createCarModel } from '../model/model-helpers';
-import { createEngineVariant, createDefaultFeatures } from '../model/model-helpers';
+import { createCarModel, createDefaultFeatures } from '../model/model-helpers';
+import { createEngineVariant } from '../model/model-helpers';
 
 // Define packages available for this model
 const commonPackages = [
@@ -83,7 +83,7 @@ const styleVariant: CarVariant = {
     },
     parkingAssistance: {
         ...createDefaultFeatures().parkingAssistance,
-        rearParkingSensor: true,
+        reversingRadar: true,
     },
     convenience: {
         ...createDefaultFeatures().convenience,
@@ -174,7 +174,7 @@ const allureVariant: CarVariant = {
       ...styleVariant.features,
       parkingAssistance: {
           ...styleVariant.features.parkingAssistance,
-          frontParkingSensor: true,
+          frontParkingSensors: true,
           parkingCameras: true,
       },
     },
@@ -255,7 +255,6 @@ const allureVariant: CarVariant = {
         },
         convenience: {
             ...allureVariant.features.convenience,
-            keylessStart: true,
         },
         interiorExterior: {
             ...allureVariant.features.interiorExterior,

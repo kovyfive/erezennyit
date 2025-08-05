@@ -40,7 +40,7 @@ const clubVariant: CarVariant = {
     },
     parkingAssistance: {
         ...createDefaultFeatures().parkingAssistance,
-        rearParkingSensor: true,
+        rearParkingSensors: true,
     },
     convenience: {
         ...createDefaultFeatures().convenience,
@@ -80,7 +80,7 @@ const smartVariant: CarVariant = {
       ...clubVariant.features,
       parkingAssistance: {
           ...clubVariant.features.parkingAssistance,
-          frontParkingSensor: true,
+          frontParkingSensors: true,
       },
       convenience: {
           ...clubVariant.features.convenience,

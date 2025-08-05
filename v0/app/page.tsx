@@ -317,7 +317,7 @@ export default function CarComparisonPage() {
   }
 
   const formatValue = (value: any) => {
-    if (value === true) return "✓"
+    if (value === true) return "✓ Included"
     if (value === false) return "✗"
     if (value === NOT_AVAILABLE) return "N/A"
     if (typeof value === "string") return value

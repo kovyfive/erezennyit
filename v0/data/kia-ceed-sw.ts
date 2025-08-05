@@ -16,9 +16,12 @@ const silverVariant: CarVariant = {
       TransmissionType.MANUAL,
       9149000,
       {
+        engineDisplacement: 998,
         horsepower: 100,
         consumption: 5.2,
+        fuelTankCapacity: 50,
         cargoVolumeSeatsUp: 625,
+        speakerCount: 6,
       },
       8699000
     ),
@@ -28,9 +31,12 @@ const silverVariant: CarVariant = {
       TransmissionType.MANUAL,
       9749000,
       {
+        engineDisplacement: 1482,
         horsepower: 140,
         consumption: 5.2,
+        fuelTankCapacity: 50,
         cargoVolumeSeatsUp: 625,
+        speakerCount: 6,
       },
       9299000,
       700000
@@ -53,9 +59,12 @@ const goldVariant: CarVariant = {
         TransmissionType.MANUAL,
         9649000,
         {
+          engineDisplacement: 998,
           horsepower: 100,
           consumption: 5.2,
+          fuelTankCapacity: 50,
           cargoVolumeSeatsUp: 625,
+          speakerCount: 6,
         },
         9199000
       ),
@@ -65,9 +74,12 @@ const goldVariant: CarVariant = {
         TransmissionType.MANUAL,
         10249000,
         {
+          engineDisplacement: 1482,
           horsepower: 140,
           consumption: 5.2,
+          fuelTankCapacity: 50,
           cargoVolumeSeatsUp: 625,
+          speakerCount: 6,
         },
         9799000,
         700000
@@ -77,7 +89,11 @@ const goldVariant: CarVariant = {
       ...createDefaultFeatures(),
     },
     customColorPrices: colors,
-    packages: [],
+    packages: [
+        { name: 'ADA Csomag (Manuális)', price: 200000 },
+        { name: 'ADA Csomag (Automata)', price: 500000 },
+        { name: 'Plusz Csomag', price: 100000 }
+    ],
     leatherSeatPackages: []
   };
 
@@ -90,9 +106,12 @@ const goldVariant: CarVariant = {
         TransmissionType.MANUAL,
         10249000,
         {
+          engineDisplacement: 1482,
           horsepower: 140,
           consumption: 5.2,
+          fuelTankCapacity: 50,
           cargoVolumeSeatsUp: 625,
+          speakerCount: 6,
         },
         9799000,
         700000
@@ -115,9 +134,12 @@ const goldVariant: CarVariant = {
         TransmissionType.MANUAL,
         10349000,
         {
+          engineDisplacement: 998,
           horsepower: 100,
           consumption: 5.2,
+          fuelTankCapacity: 50,
           cargoVolumeSeatsUp: 625,
+          speakerCount: 6,
         },
         9899000
       ),
@@ -127,9 +149,12 @@ const goldVariant: CarVariant = {
         TransmissionType.MANUAL,
         10949000,
         {
+          engineDisplacement: 1482,
           horsepower: 140,
           consumption: 5.2,
+          fuelTankCapacity: 50,
           cargoVolumeSeatsUp: 625,
+          speakerCount: 6,
         },
         10499000,
         700000
@@ -139,8 +164,14 @@ const goldVariant: CarVariant = {
       ...createDefaultFeatures(),
     },
     customColorPrices: colors,
-    packages: [],
-    leatherSeatPackages: []
+    packages: [
+        { name: 'ADA Csomag (Manuális)', price: 200000 },
+        { name: 'ADA Csomag (Automata)', price: 450000 },
+        { name: 'Top Csomag', price: 650000 }
+    ],
+    leatherSeatPackages: [
+        { name: 'Bőr Csomag', price: 500000 }
+    ]
   };
 
   const platinumGtLineVariant: CarVariant = {
@@ -152,9 +183,12 @@ const goldVariant: CarVariant = {
         TransmissionType.MANUAL,
         12049000,
         {
+          engineDisplacement: 1482,
           horsepower: 140,
           consumption: 5.2,
+          fuelTankCapacity: 50,
           cargoVolumeSeatsUp: 625,
+          speakerCount: 6,
         },
         11599000,
         700000
