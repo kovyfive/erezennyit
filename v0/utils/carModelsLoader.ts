@@ -4,7 +4,7 @@ import { CarModel } from '../model/model';
 // This needs to be updated when new models are added
 const CAR_MODEL_FILES = [
   'kia-ceed-sw',
-  'test',
+  // 'test', // Removed because it contains a duplicate Kia Ceed SW model
   'hyundai-i30',
   'hyundai-kona',
   'kgm-korando',
@@ -30,14 +30,28 @@ const CAR_MODEL_FILES = [
  */
 export async function loadAllCarModels(): Promise<Record<string, CarModel>> {
   const models: Record<string, CarModel> = {};
+  // Keep track of unique models by manufacturer+model name to avoid duplicates
+  const uniqueModels: Set<string> = new Set();
   
   for (const modelFile of CAR_MODEL_FILES) {
     try {
       // Dynamic import of the model file
       /* @vite-ignore */
       const module = await import(`../data/${modelFile}`);
-      // Store the model using the file name as key
-      models[modelFile] = module.default;
+      const carModel = module.default;
+      
+      // Create a unique identifier for the car model
+      const uniqueId = `${carModel.manufacturer}-${carModel.modelName}`;
+      
+      // Skip duplicates
+      if (uniqueModels.has(uniqueId)) {
+        console.warn(`Warning: Duplicate car model found - ${uniqueId}. Skipping ${modelFile}`);
+        continue;
+      }
+      
+      // Add to unique set and models object
+      uniqueModels.add(uniqueId);
+      models[modelFile] = carModel;
     } catch (error) {
       console.error(`Failed to load car model from ${modelFile}:`, error);
     }

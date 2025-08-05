@@ -363,7 +363,11 @@ export default function CarComparisonPage() {
             </Button>
 
             <div className="flex items-center space-x-2">
-              <Checkbox id="hide-non-satisfying" checked={hideNonSatisfying} onCheckedChange={setHideNonSatisfying} />
+              <Checkbox 
+                id="hide-non-satisfying" 
+                checked={hideNonSatisfying} 
+                onCheckedChange={(checked) => setHideNonSatisfying(checked === true)} 
+              />
               <label htmlFor="hide-non-satisfying" className="text-sm font-medium">
                 Hide non-satisfying variants
               </label>
