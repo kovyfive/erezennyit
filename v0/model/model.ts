@@ -6,6 +6,7 @@
 // Constants for unavailable data
 export const NOT_AVAILABLE = "N/A";
 export const MISSING = "MISSING";
+export const NOT_INCLUDED = "NOT_INCLUDED";
 
 // Enum types for common values
 export enum EngineType {
@@ -111,6 +112,8 @@ export interface InteriorExteriorFeatures {
   rubberMats: FeatureAvailability;
   tintedRearWindows: FeatureAvailability;
   roofRails: FeatureAvailability;
+  slidingCenterConsole: FeatureAvailability;
+  leatherSeats: FeatureAvailability;
 }
 
 // Combined features
@@ -127,7 +130,6 @@ export interface EngineVariant {
   listedEngineName: string;
   engineType: EngineType | typeof NOT_AVAILABLE;
   transmissionType: TransmissionType | typeof NOT_AVAILABLE;
-  automaticPrice?: number; // Optional price for automatic transmission if it's an option
   technicalSpecs: TechnicalSpecs;
   basePrice: number;
   discountedPrice?: number;

@@ -10,6 +10,7 @@ import {
   TransmissionType,
   NOT_AVAILABLE,
   MISSING,
+  NOT_INCLUDED,
 } from "../model/model"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -84,6 +85,10 @@ export default function CarComparisonPage() {
           }
         }
       })
+
+      ranges["cargoVolumeSeatsUp"].current = [450, ranges["cargoVolumeSeatsUp"].max]
+      ranges["engineDisplacement"].current = [1250, ranges["engineDisplacement"].max]
+      ranges["topSpeed"].current = [175, ranges["topSpeed"].max]
 
       setNumericRanges(ranges)
       setLoading(false)
@@ -270,6 +275,8 @@ export default function CarComparisonPage() {
     { category: "Interior/Exterior Features", key: "rubberMats", label: "Rubber Mats", type: "feature" },
     { category: "Interior/Exterior Features", key: "tintedRearWindows", label: "Tinted Rear Windows", type: "feature" },
     { category: "Interior/Exterior Features", key: "roofRails", label: "Roof Rails", type: "feature" },
+    { category: "Interior/Exterior Features", key: "leatherSeats", label: "Leather Seats", type: "feature" },
+    { category: "Interior/Exterior Features", key: "slidingCenterConsole", label: "Sliding Center Console", type: "feature" },
   ]
 
   const toggleRowHighlight = (key: string) => {
@@ -318,11 +325,12 @@ export default function CarComparisonPage() {
   }
 
   const formatValue = (value: any) => {
-    if (value === true) return "✅ Included"
-    if (value === false) return "❌"
+    if (value === true) return "✅ S"
+    if (value === false) return "➡️"
     if (value === NOT_AVAILABLE) return "⭕N/A"
     if (value === MISSING) return "⭕N/A"
-    if (typeof value === "string") return value
+    if (value === NOT_INCLUDED) return "❌"
+    if (typeof value === "string") return "📦 " + value
     if (typeof value === "number") return value.toString()
     return "⭕N/A"
   }

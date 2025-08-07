@@ -1,11 +1,13 @@
 
-import { CarModel, EngineType, TransmissionType, DiscountTarget, CarVariant } from '../model/model';
+import { CarModel, EngineType, TransmissionType, DiscountTarget, CarVariant, MISSING, NOT_INCLUDED } from '../model/model';
 import { createCarModel } from '../model/model-helpers';
 import { createEngineVariant, createDefaultFeatures } from '../model/model-helpers';
 
 const colors = [
     { name: 'Metál', price: 175000 },
 ];
+
+const automatic = { name: 'AUTOMATIC', price: 700000 } ;
 
 const silverVariant: CarVariant = {
   variantName: 'Silver',
@@ -44,15 +46,59 @@ const silverVariant: CarVariant = {
         speakerCount: 6,
         range: 961,
       },
-      9299000,
-      700000
+      9299000
     ),
   ],
   features: {
     ...createDefaultFeatures(),
+    safety: {
+        laneKeepAssist: true,
+        cruiseControl: true,
+        smartCruiseControl: "AUTOMATIC",
+        smartCruiseControlWithStopAndGo: false,
+        blindSpotCollisionAvoidanceAssist: false,
+        isofix: true,
+      },
+      parkingAssistance: {
+        reversingRadar: true,
+        frontParkingSensor: false,
+        rearParkingSensor: NOT_INCLUDED,
+        parkingCameras: true,
+        parkingCameras360View: NOT_INCLUDED,
+        semiOrFullAutomaticParkingAssistant: NOT_INCLUDED,
+        electricParkingBrake: false,
+      },
+      convenience: {
+        keylessStart: false,
+        wirelessPhoneCharger: false,
+        powerTailgate: false,
+        powerTailgateWithFootSensor: false,
+        frontPowerWindows: true,
+        rearPowerWindows: false,
+        heatedFrontSeats: true,
+        heatedRearSeats: false,
+        dualZoneAC: true,
+        headUpDisplay: true,
+      },
+      entertainment: {
+        premiumSpeaker: false,
+        wiredCarPlayAndroidAuto: true,
+        wirelessCarPlayAndroidAuto: NOT_INCLUDED,
+      },
+      interiorExterior: {
+        spareTire: true,
+        metalPedals: false,
+        paddleShifters: NOT_INCLUDED,
+        velourFloorMats: true,
+        rubberMats: NOT_INCLUDED,
+        tintedRearWindows: false,
+        roofRails: true,
+        slidingCenterConsole: false,
+        leatherSeats: false
+      }
   },
   customColorPrices: colors,
-  packages: [],
+  packages: [ automatic ],
   leatherSeatPackages: []
 };
 
@@ -93,18 +139,33 @@ const goldVariant: CarVariant = {
           speakerCount: 6,
           range: 961,
         },
-        9799000,
-        700000
+        9799000
       ),
     ],
     features: {
-      ...createDefaultFeatures(),
+      ...silverVariant.features,
+      safety: {
+        ...silverVariant.features.safety,
+        smartCruiseControlWithStopAndGo: 'ADA Csomag (Automata)',
+        blindSpotCollisionAvoidanceAssist: 'ADA Csomag (Manuális)'
+      },
+      parkingAssistance: {
+        ...silverVariant.features.parkingAssistance,
+        frontParkingSensor: "Plus csomag",
+        electricParkingBrake: "ADA Csomag (Automata)"
+      },
+      interiorExterior: {
+        ...silverVariant.features.interiorExterior,
+        tintedRearWindows: true,
+        slidingCenterConsole: "ADA Csomag (Automata)"
+      }
     },
     customColorPrices: colors,
     packages: [
+        automatic,
         { name: 'ADA Csomag (Manuális)', price: 200000 },
         { name: 'ADA Csomag (Automata)', price: 500000 },
-        { name: 'Plusz Csomag', price: 100000 }
+        { name: 'Plus csomag', price: 100000 }
     ],
     leatherSeatPackages: []
   };
@@ -128,15 +189,20 @@ const goldVariant: CarVariant = {
           speakerCount: 6,
           range: 961,
         },
-        9799000,
-        700000
+        9799000
       ),
     ],
     features: {
-      ...createDefaultFeatures(),
+      ...silverVariant.features,
+      interiorExterior: {
+        ...silverVariant.features.interiorExterior,
+        spareTire: false,
+        tintedRearWindows: true,
+      }
+
     },
     customColorPrices: colors,
-    packages: [],
+    packages: [ automatic ],
     leatherSeatPackages: []
   };
 
@@ -177,15 +243,44 @@ const goldVariant: CarVariant = {
           speakerCount: 6,
           range: 961,
         },
-        10499000,
-        700000
+        10499000
       ),
     ],
     features: {
-      ...createDefaultFeatures(),
+      ...goldVariant.features,
+      safety: {
+        ...goldVariant.features.safety,
+        smartCruiseControlWithStopAndGo: 'ADA Csomag (Automata)',
+        blindSpotCollisionAvoidanceAssist: 'ADA Csomag (Manuális)'  
+      },
+      parkingAssistance: {
+        ...goldVariant.features.parkingAssistance,
+        frontParkingSensor: true,
+        electricParkingBrake: true
+      },
+      convenience: {
+        ...goldVariant.features.convenience,
+        keylessStart: true,
+        wirelessPhoneCharger: "Top Csomag",
+        powerTailgate: "Top Csomag",
+        powerTailgateWithFootSensor: "Top Csomag",
+        rearPowerWindows: true,
+        heatedRearSeats: true,
+      },
+      entertainment: {
+        ...goldVariant.features.entertainment,
+        premiumSpeaker: "Top Csomag",
+      },
+      interiorExterior: {
+        ...goldVariant.features.interiorExterior,
+        metalPedals: "Top Csomag",
+        slidingCenterConsole: true,
+        leatherSeats: "Bőr Csomag"
+      }
     },
     customColorPrices: colors,
     packages: [
+        automatic,
         { name: 'ADA Csomag (Manuális)', price: 200000 },
         { name: 'ADA Csomag (Automata)', price: 450000 },
         { name: 'Top Csomag', price: 650000 }
@@ -214,15 +309,37 @@ const goldVariant: CarVariant = {
           speakerCount: 6,
           range: 961,
         },
-        11599000,
-        700000
+        11599000
       ),
     ],
     features: {
-      ...createDefaultFeatures(),
+      ...platinumVariant.features,
+      safety: {
+        ...platinumVariant.features.safety,
+        smartCruiseControlWithStopAndGo: true,
+        blindSpotCollisionAvoidanceAssist: true
+      },
+      convenience: {
+        ...platinumVariant.features.convenience,
+        wirelessPhoneCharger: true,
+        powerTailgate: true,
+        powerTailgateWithFootSensor: true,
+      },
+      entertainment: {
+        ...platinumVariant.features.entertainment,
+        premiumSpeaker: true,
+      },
+      interiorExterior: {
+        ...platinumVariant.features.interiorExterior,
+        metalPedals: true,
+        leatherSeats: true,
+      }
+
     },
     customColorPrices: colors,
-    packages: [],
+    packages: [
+        automatic,
+    ],
     leatherSeatPackages: []
   };
 

@@ -22,7 +22,6 @@ export function createEngineVariant(
   basePrice: number,
   technicalSpecs: Partial<TechnicalSpecs> = {},
   discountedPrice?: number,
-  automaticPrice?: number
 ): EngineVariant {
   return {
     listedEngineName,
@@ -30,7 +29,6 @@ export function createEngineVariant(
     transmissionType,
     basePrice,
     discountedPrice,
-    automaticPrice,
     technicalSpecs: {
       engineDisplacement: technicalSpecs.engineDisplacement || NOT_AVAILABLE,
       horsepower: technicalSpecs.horsepower || NOT_AVAILABLE,
@@ -92,6 +90,8 @@ export function createDefaultFeatures(): Features {
       rubberMats: MISSING,
       tintedRearWindows: MISSING,
       roofRails: MISSING,
+      slidingCenterConsole: MISSING,
+      leatherSeats: MISSING,
     }
   };
 }
@@ -201,9 +201,35 @@ export class CarModelImpl implements CarModel {
       }
     }
 
-    // Add automatic transmission price if it's an option
-    if (engineVariant.automaticPrice && selectedFeatures.includes('automatic')) {
-      basePrice += engineVariant.automaticPrice;
+    // Check for leather seat options
+    for (const feature of selectedFeatures) {
+      // Look for leather seat package options
+      if (feature === 'leatherSeats') {
+        // Check if the car has leather seat packages available
+        if (variant.leatherSeatPackages && variant.leatherSeatPackages.length > 0) {
+          // Add the first/default leather package (could be made more specific in the future)
+          const leatherPackage = variant.leatherSeatPackages[0];
+          if (!requiredPackages.some(pkg => pkg.name === leatherPackage.name)) {
+            requiredPackages.push(leatherPackage);
+            basePrice += leatherPackage.price;
+          }
+        }
+      }
+      
+      // Check for custom color options
+      if (feature.startsWith('color:')) {
+        const colorName = feature.replace('color:', '');
+        const customColor = variant.customColorPrices.find(color => color.name === colorName);
+        if (customColor) {
+          // Create a pseudo-package for the color for display in UI
+          const colorPackage: Package = {
+            name: `Color: ${customColor.name}`,
+            price: customColor.price
+          };
+          requiredPackages.push(colorPackage);
+          basePrice += customColor.price;
+        }
+      }
     }
 
     // Return the final price
