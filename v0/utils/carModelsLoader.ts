@@ -5,7 +5,7 @@ import { CarModel } from '../model/model';
 const CAR_MODEL_FILES = [
   'kia-ceed-sw', // ✅
   'kia-proceed', // ✅
-  'hyundai-i30',
+  'hyundai-i30', // ✅
   'kgm-korando',
   'kia-sportage', // ✅
   'mazda-3',
