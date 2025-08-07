@@ -3,10 +3,11 @@ import { CarModel } from '../model/model';
 // List of all car models in the data folder
 // This needs to be updated when new models are added
 const CAR_MODEL_FILES = [
-  'kia-ceed-sw',
+  'kia-ceed-sw', // ✅
+  'kia-proceed', // ✅
   'hyundai-i30',
   'kgm-korando',
-  'kia-sportage',
+  'kia-sportage', // ✅
   'mazda-3',
   'opel-astra-sports-tourer',
   'opel-grandland',
