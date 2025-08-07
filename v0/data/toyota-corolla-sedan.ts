@@ -36,10 +36,14 @@ const activeVariant: CarVariant = {
       12505000,
       {
         horsepower: 140,
+        engineDisplacement: 1798,
         consumption: 4.5,
         acceleration0to100: 9.1,
         topSpeed: 180,
         cargoVolumeSeatsUp: 471,
+        fuelTankCapacity: 43,
+        range: 956,
+        speakerCount: 6,
       },
       10505000
     ),

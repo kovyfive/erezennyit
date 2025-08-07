@@ -62,23 +62,6 @@ const styleVariant: CarVariant = {
       },
       11030000
     ),
-    createEngineVariant(
-        'Elektromos 156 LE (54 kWh)',
-        EngineType.EV,
-        TransmissionType.SINGLE_SPEED,
-        17950000,
-        {
-          horsepower: 156,
-          range: 419,
-          acceleration0to100: 9.8,
-          topSpeed: 170,
-          cargoVolumeSeatsUp: 361,
-          engineDisplacement: 0,
-          fuelTankCapacity: 0,
-          speakerCount: 6,
-        },
-        15650000
-      ),
   ],
   features: {
     ...createDefaultFeatures(),
@@ -123,11 +106,14 @@ const allureVariant: CarVariant = {
         13420000,
         {
           horsepower: 145,
+          engineDisplacement: 1199,
           consumption: 5,
           acceleration0to100: 9,
           topSpeed: 210,
           fuelTankCapacity: 52,
           cargoVolumeSeatsUp: 361,
+          range: 1040,
+          speakerCount: 6,
         },
         11620000
       ),
@@ -138,11 +124,14 @@ const allureVariant: CarVariant = {
         13320000,
         {
           horsepower: 131,
+          engineDisplacement: 1499,
           consumption: 5.1,
           acceleration0to100: 10.6,
           topSpeed: 207,
           fuelTankCapacity: 53,
           cargoVolumeSeatsUp: 412,
+          range: 1039,
+          speakerCount: 6,
         },
         11520000
       ),
@@ -153,28 +142,16 @@ const allureVariant: CarVariant = {
           17510000,
           {
             horsepower: 195,
+            engineDisplacement: 1598,
             consumption: 1.2,
             acceleration0to100: 7.6,
             topSpeed: 225,
             fuelTankCapacity: 42,
             cargoVolumeSeatsUp: 361,
             range: 85,
+            speakerCount: 6,
           },
           16010000
-        ),
-      createEngineVariant(
-          'Elektromos 156 LE (54 kWh)',
-          EngineType.EV,
-          TransmissionType.SINGLE_SPEED,
-          18810000,
-          {
-            horsepower: 156,
-            range: 419,
-            acceleration0to100: 9.8,
-            topSpeed: 170,
-            cargoVolumeSeatsUp: 361,
-          },
-          16510000
         ),
     ],
     features: {
@@ -200,11 +177,14 @@ const allureVariant: CarVariant = {
         14630000,
         {
           horsepower: 145,
+          engineDisplacement: 1199,
           consumption: 5,
           acceleration0to100: 9,
           topSpeed: 210,
           fuelTankCapacity: 52,
           cargoVolumeSeatsUp: 361,
+          range: 1040,
+          speakerCount: 6,
         },
         12630000
       ),
@@ -215,11 +195,14 @@ const allureVariant: CarVariant = {
         14540000,
         {
           horsepower: 131,
+          engineDisplacement: 1499,
           consumption: 5.1,
           acceleration0to100: 10.6,
           topSpeed: 207,
           fuelTankCapacity: 53,
           cargoVolumeSeatsUp: 412,
+          range: 1039,
+          speakerCount: 6,
         },
         12540000
       ),
@@ -230,28 +213,16 @@ const allureVariant: CarVariant = {
           18750000,
           {
             horsepower: 195,
+            engineDisplacement: 1598,
             consumption: 1.2,
             acceleration0to100: 7.6,
             topSpeed: 225,
             fuelTankCapacity: 42,
             cargoVolumeSeatsUp: 361,
             range: 85,
+            speakerCount: 6,
           },
           17250000
-        ),
-      createEngineVariant(
-          'Elektromos 156 LE (54 kWh)',
-          EngineType.EV,
-          TransmissionType.SINGLE_SPEED,
-          19780000,
-          {
-            horsepower: 156,
-            range: 419,
-            acceleration0to100: 9.8,
-            topSpeed: 170,
-            cargoVolumeSeatsUp: 361,
-          },
-          17480000
         ),
     ],
     features: {

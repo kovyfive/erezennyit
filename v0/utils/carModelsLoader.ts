@@ -4,7 +4,6 @@ import { CarModel } from '../model/model';
 // This needs to be updated when new models are added
 const CAR_MODEL_FILES = [
   'kia-ceed-sw',
-  // 'test', // Removed because it contains a duplicate Kia Ceed SW model
   'hyundai-i30',
   'hyundai-kona',
   'kgm-korando',
@@ -12,9 +11,6 @@ const CAR_MODEL_FILES = [
   'mazda-3',
   'mazda-cx30',
   'mitsubishi-asx',
-  'mitsubishi-colt',
-  'mitsubishi-outlander-phev',
-  'mitsubishi-space-star',
   'opel-astra',
   'opel-astra-sports-tourer',
   'opel-grandland',
