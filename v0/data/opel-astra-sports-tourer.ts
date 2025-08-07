@@ -21,10 +21,14 @@ const editionVariant: CarVariant = {
       10950000,
       {
         horsepower: 130,
-        consumption: 5.9,
+        engineDisplacement: 1199,
+        consumption: 5.6,
         acceleration0to100: 10,
         topSpeed: 210,
+        fuelTankCapacity: 52,
         cargoVolumeSeatsUp: 597,
+        range: 928,
+        speakerCount: 6,
       },
       9190000
     ),
@@ -35,10 +39,14 @@ const editionVariant: CarVariant = {
       11630000,
       {
         horsepower: 130,
-        consumption: 6.1,
+        engineDisplacement: 1199,
+        consumption: 5.8,
         acceleration0to100: 9.9,
         topSpeed: 210,
+        fuelTankCapacity: 52,
         cargoVolumeSeatsUp: 597,
+        range: 896,
+        speakerCount: 6,
       },
       9880000
     ),
@@ -49,10 +57,14 @@ const editionVariant: CarVariant = {
       12310000,
       {
         horsepower: 145,
+        engineDisplacement: 1199,
         consumption: 5.1,
         acceleration0to100: 9.3,
         topSpeed: 210,
+        fuelTankCapacity: 52,
         cargoVolumeSeatsUp: 597,
+        range: 1019,
+        speakerCount: 6,
       },
       10560000
     ),
@@ -63,10 +75,14 @@ const editionVariant: CarVariant = {
       12420000,
       {
         horsepower: 130,
+        engineDisplacement: 1498,
         consumption: 5.1,
         acceleration0to100: 11,
         topSpeed: 208,
+        fuelTankCapacity: 52,
         cargoVolumeSeatsUp: 597,
+        range: 1019,
+        speakerCount: 6,
       },
       10670000
     ),
@@ -110,10 +126,14 @@ const gsVariant: CarVariant = {
         12030000,
         {
           horsepower: 130,
+          engineDisplacement: 1199,
           consumption: 5.9,
           acceleration0to100: 10,
           topSpeed: 210,
+          fuelTankCapacity: 52,
           cargoVolumeSeatsUp: 597,
+          range: 881,
+          speakerCount: 6,
         },
         10280000
       ),
@@ -124,10 +144,14 @@ const gsVariant: CarVariant = {
         12710000,
         {
           horsepower: 130,
+          engineDisplacement: 1199,
           consumption: 6.1,
           acceleration0to100: 9.9,
           topSpeed: 210,
+          fuelTankCapacity: 52,
           cargoVolumeSeatsUp: 597,
+          range: 852,
+          speakerCount: 6,
         },
         10960000
       ),
@@ -138,10 +162,14 @@ const gsVariant: CarVariant = {
         13390000,
         {
           horsepower: 145,
+          engineDisplacement: 1199,
           consumption: 5.1,
           acceleration0to100: 9.3,
           topSpeed: 210,
+          fuelTankCapacity: 52,
           cargoVolumeSeatsUp: 597,
+          range: 1019,
+          speakerCount: 6,
         },
         11640000
       ),
@@ -152,10 +180,14 @@ const gsVariant: CarVariant = {
         13500000,
         {
           horsepower: 130,
+          engineDisplacement: 1498,
           consumption: 5.1,
           acceleration0to100: 11,
           topSpeed: 208,
+          fuelTankCapacity: 52,
           cargoVolumeSeatsUp: 597,
+          range: 1019,
+          speakerCount: 6,
         },
         11750000
       ),

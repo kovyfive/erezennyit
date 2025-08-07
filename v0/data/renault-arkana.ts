@@ -23,10 +23,14 @@ const technoVariant: CarVariant = {
       12849000,
       {
         horsepower: 140,
+        engineDisplacement: 1333,
         consumption: 5.8,
         acceleration0to100: 9.8,
         topSpeed: 205,
         cargoVolumeSeatsUp: 513,
+        fuelTankCapacity: 50,
+        range: 862,
+        speakerCount: 6,
       },
       11649000
     ),
@@ -37,10 +41,14 @@ const technoVariant: CarVariant = {
       13449000,
       {
         horsepower: 145,
+        engineDisplacement: 1598,
         consumption: 4.8,
         acceleration0to100: 10.8,
         topSpeed: 172,
         cargoVolumeSeatsUp: 480,
+        fuelTankCapacity: 50,
+        range: 1042,
+        speakerCount: 6,
       },
       12049000
     ),
@@ -87,10 +95,14 @@ const espritAlpineVariant: CarVariant = {
         13999000,
         {
           horsepower: 140,
+          engineDisplacement: 1333,
           consumption: 5.8,
           acceleration0to100: 9.8,
           topSpeed: 205,
           cargoVolumeSeatsUp: 513,
+          fuelTankCapacity: 50,
+          range: 862,
+          speakerCount: 6,
         },
         12799000
       ),
@@ -101,10 +113,14 @@ const espritAlpineVariant: CarVariant = {
         14399000,
         {
           horsepower: 145,
+          engineDisplacement: 1598,
           consumption: 4.8,
           acceleration0to100: 10.8,
           topSpeed: 172,
           cargoVolumeSeatsUp: 480,
+          fuelTankCapacity: 50,
+          range: 1042,
+          speakerCount: 6,
         },
         12999000
       ),

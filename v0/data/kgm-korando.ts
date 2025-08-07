@@ -21,10 +21,14 @@ const clubVariant: CarVariant = {
       9299000,
       {
         horsepower: 163,
+        engineDisplacement: 1497,
         consumption: 7.578,
-        acceleration0to100: 0,
+        acceleration0to100: 10.0,
         topSpeed: 191,
         cargoVolumeSeatsUp: 551,
+        fuelTankCapacity: 50,
+        range: 660,
+        speakerCount: 6,
       },
       8599000,
       699000
@@ -67,10 +71,14 @@ const smartVariant: CarVariant = {
         10199000,
         {
           horsepower: 163,
+          engineDisplacement: 1497,
           consumption: 7.578,
-          acceleration0to100: 0,
+          acceleration0to100: 10.0,
           topSpeed: 191,
           cargoVolumeSeatsUp: 551,
+          fuelTankCapacity: 50,
+          range: 660,
+          speakerCount: 6,
         },
         9499000,
         699000
@@ -103,10 +111,14 @@ const smartVariant: CarVariant = {
         12399000,
         {
           horsepower: 163,
+          engineDisplacement: 1497,
           consumption: 8.101,
-          acceleration0to100: 0,
+          acceleration0to100: 10.0,
           topSpeed: 189,
           cargoVolumeSeatsUp: 551,
+          fuelTankCapacity: 50,
+          range: 617,
+          speakerCount: 6,
         },
         11699000
       ),

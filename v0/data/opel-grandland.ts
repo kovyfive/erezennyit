@@ -22,10 +22,14 @@ const editionVariant: CarVariant = {
       13850000,
       {
         horsepower: 145,
+        engineDisplacement: 1199,
         consumption: 5.5,
         acceleration0to100: 10.2,
         topSpeed: 202,
+        fuelTankCapacity: 55,
         cargoVolumeSeatsUp: 550,
+        range: 1000,
+        speakerCount: 6,
       },
       11990000
     ),
@@ -70,10 +74,14 @@ const gsVariant: CarVariant = {
         14850000,
         {
           horsepower: 145,
+          engineDisplacement: 1199,
           consumption: 5.5,
           acceleration0to100: 10.2,
           topSpeed: 202,
+          fuelTankCapacity: 55,
           cargoVolumeSeatsUp: 550,
+          range: 1000,
+          speakerCount: 6,
         },
         12990000
       ),

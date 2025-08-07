@@ -35,11 +35,13 @@ const styleVariant: CarVariant = {
       12620000,
       {
         horsepower: 145,
+        engineDisplacement: 1199,
         consumption: 5,
         acceleration0to100: 9,
         topSpeed: 210,
         fuelTankCapacity: 52,
         cargoVolumeSeatsUp: 361,
+        speakerCount: 6,
       },
       11120000
     ),
@@ -50,11 +52,13 @@ const styleVariant: CarVariant = {
       12530000,
       {
         horsepower: 131,
+        engineDisplacement: 1499,
         consumption: 5.1,
         acceleration0to100: 10.6,
         topSpeed: 207,
         fuelTankCapacity: 53,
         cargoVolumeSeatsUp: 412,
+        speakerCount: 6,
       },
       11030000
     ),
@@ -69,6 +73,9 @@ const styleVariant: CarVariant = {
           acceleration0to100: 9.8,
           topSpeed: 170,
           cargoVolumeSeatsUp: 361,
+          engineDisplacement: 0,
+          fuelTankCapacity: 0,
+          speakerCount: 6,
         },
         15650000
       ),

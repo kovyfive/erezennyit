@@ -18,7 +18,14 @@ const silverVariant: CarVariant = {
       11399000,
       {
         horsepower: 160,
+        engineDisplacement: 1598,
+        consumption: 7.1,
+        acceleration0to100: 9.9,
+        topSpeed: 194,
+        fuelTankCapacity: 52,
         cargoVolumeSeatsUp: 562,
+        range: 732,
+        speakerCount: 6,
       },
       10799000
     ),
@@ -29,7 +36,14 @@ const silverVariant: CarVariant = {
       12299000,
       {
         horsepower: 160,
+        engineDisplacement: 1598,
+        consumption: 6.9,
+        acceleration0to100: 9.4,
+        topSpeed: 192,
+        fuelTankCapacity: 52,
         cargoVolumeSeatsUp: 562,
+        range: 753,
+        speakerCount: 6,
       },
       11699000
     ),
@@ -40,7 +54,14 @@ const silverVariant: CarVariant = {
       13099000,
       {
         horsepower: 136,
+        engineDisplacement: 1598,
+        consumption: 5.0,
+        acceleration0to100: 11.4,
+        topSpeed: 180,
+        fuelTankCapacity: 52,
         cargoVolumeSeatsUp: 526,
+        range: 1040,
+        speakerCount: 6,
       },
       12499000
     ),
@@ -63,7 +84,14 @@ const goldVariant: CarVariant = {
         12149000,
         {
           horsepower: 160,
+          engineDisplacement: 1598,
+          consumption: 7.1,
+          acceleration0to100: 9.9,
+          topSpeed: 194,
+          fuelTankCapacity: 52,
           cargoVolumeSeatsUp: 562,
+          range: 732,
+          speakerCount: 6,
         },
         11549000
       ),
@@ -74,7 +102,14 @@ const goldVariant: CarVariant = {
         13149000,
         {
           horsepower: 160,
+          engineDisplacement: 1598,
+          consumption: 6.9,
+          acceleration0to100: 9.4,
+          topSpeed: 192,
+          fuelTankCapacity: 52,
           cargoVolumeSeatsUp: 562,
+          range: 753,
+          speakerCount: 6,
         },
         12549000
       ),
@@ -85,7 +120,14 @@ const goldVariant: CarVariant = {
         13949000,
         {
           horsepower: 136,
+          engineDisplacement: 1598,
+          consumption: 5.0,
+          acceleration0to100: 11.4,
+          topSpeed: 180,
+          fuelTankCapacity: 52,
           cargoVolumeSeatsUp: 526,
+          range: 1040,
+          speakerCount: 6,
         },
         13349000
       ),
@@ -95,8 +137,15 @@ const goldVariant: CarVariant = {
         TransmissionType.HYBRID_AUTOMATIC,
         14949000,
         {
-          horsepower: 210,
+          horsepower: 215,
+          engineDisplacement: 1598,
+          consumption: 6.5,
+          acceleration0to100: 8.3,
+          topSpeed: 193,
+          fuelTankCapacity: 52,
           cargoVolumeSeatsUp: 587,
+          range: 800,
+          speakerCount: 6,
         },
         14349000
       ),
@@ -106,8 +155,15 @@ const goldVariant: CarVariant = {
         TransmissionType.HYBRID_AUTOMATIC,
         18349000,
         {
-          horsepower: 245,
+          horsepower: 265,
+          engineDisplacement: 1598,
+          consumption: 1.2,
+          acceleration0to100: 8.2,
+          topSpeed: 191,
+          fuelTankCapacity: 42,
           cargoVolumeSeatsUp: 540,
+          range: 55,
+          speakerCount: 6,
         },
         17749000
       ),

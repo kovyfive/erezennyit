@@ -317,12 +317,12 @@ export default function CarComparisonPage() {
   }
 
   const formatValue = (value: any) => {
-    if (value === true) return "✓ Included"
-    if (value === false) return "✗"
-    if (value === NOT_AVAILABLE) return "N/A"
+    if (value === true) return "✅ Included"
+    if (value === false) return "❌"
+    if (value === NOT_AVAILABLE) return "⭕N/A"
     if (typeof value === "string") return value
     if (typeof value === "number") return value.toString()
-    return "N/A"
+    return "⭕N/A"
   }
 
   const getCellClassName = (value: any, isHighlighted: boolean) => {

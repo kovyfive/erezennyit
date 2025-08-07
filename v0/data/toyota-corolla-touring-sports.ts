@@ -38,10 +38,14 @@ const activeVariant: CarVariant = {
       13040000,
       {
         horsepower: 140,
+        engineDisplacement: 1798,
         consumption: 4.5,
         acceleration0to100: 9.1,
         topSpeed: 180,
         cargoVolumeSeatsUp: 596,
+        fuelTankCapacity: 43,
+        range: 956,
+        speakerCount: 6,
       },
       12040000
     ),
@@ -86,10 +90,14 @@ const comfortVariant: CarVariant = {
         13210000,
         {
           horsepower: 140,
+          engineDisplacement: 1798,
           consumption: 4.5,
           acceleration0to100: 9.1,
           topSpeed: 180,
           cargoVolumeSeatsUp: 596,
+          fuelTankCapacity: 43,
+          range: 956,
+          speakerCount: 6,
         },
         12210000
       ),
@@ -100,10 +108,14 @@ const comfortVariant: CarVariant = {
         14005000,
         {
           horsepower: 196,
+          engineDisplacement: 1987,
           consumption: 4.5,
           acceleration0to100: 7.4,
           topSpeed: 180,
           cargoVolumeSeatsUp: 581,
+          fuelTankCapacity: 43,
+          range: 956,
+          speakerCount: 6,
         },
         13005000
       ),
@@ -134,10 +146,14 @@ const comfortVariant: CarVariant = {
         13955000,
         {
           horsepower: 140,
+          engineDisplacement: 1798,
           consumption: 4.5,
           acceleration0to100: 9.1,
           topSpeed: 180,
           cargoVolumeSeatsUp: 596,
+          fuelTankCapacity: 43,
+          range: 956,
+          speakerCount: 6,
         },
         12955000
       ),
@@ -148,10 +164,14 @@ const comfortVariant: CarVariant = {
         14750000,
         {
           horsepower: 196,
+          engineDisplacement: 1987,
           consumption: 4.5,
           acceleration0to100: 7.4,
           topSpeed: 180,
           cargoVolumeSeatsUp: 581,
+          fuelTankCapacity: 43,
+          range: 956,
+          speakerCount: 6,
         },
         13750000
       ),
@@ -185,10 +205,14 @@ const comfortVariant: CarVariant = {
         14745000,
         {
           horsepower: 140,
+          engineDisplacement: 1798,
           consumption: 4.5,
           acceleration0to100: 9.1,
           topSpeed: 180,
           cargoVolumeSeatsUp: 596,
+          fuelTankCapacity: 43,
+          range: 956,
+          speakerCount: 6,
         },
         13745000
       ),
@@ -199,10 +223,14 @@ const comfortVariant: CarVariant = {
         15540000,
         {
           horsepower: 196,
+          engineDisplacement: 1987,
           consumption: 4.5,
           acceleration0to100: 7.4,
           topSpeed: 180,
           cargoVolumeSeatsUp: 581,
+          fuelTankCapacity: 43,
+          range: 956,
+          speakerCount: 6,
         },
         14540000
       ),
@@ -233,10 +261,14 @@ const comfortVariant: CarVariant = {
         15355000,
         {
           horsepower: 140,
+          engineDisplacement: 1798,
           consumption: 4.5,
           acceleration0to100: 9.1,
           topSpeed: 180,
           cargoVolumeSeatsUp: 596,
+          fuelTankCapacity: 43,
+          range: 956,
+          speakerCount: 6,
         },
         14355000
       ),
@@ -247,10 +279,14 @@ const comfortVariant: CarVariant = {
         16150000,
         {
           horsepower: 196,
+          engineDisplacement: 1987,
           consumption: 4.5,
           acceleration0to100: 7.4,
           topSpeed: 180,
           cargoVolumeSeatsUp: 581,
+          fuelTankCapacity: 43,
+          range: 956,
+          speakerCount: 6,
         },
         15150000
       ),
@@ -273,10 +309,14 @@ const comfortVariant: CarVariant = {
         15560000,
         {
           horsepower: 140,
+          engineDisplacement: 1798,
           consumption: 4.5,
           acceleration0to100: 9.1,
           topSpeed: 180,
           cargoVolumeSeatsUp: 596,
+          fuelTankCapacity: 43,
+          range: 956,
+          speakerCount: 6,
         },
         14560000
       ),
@@ -287,10 +327,14 @@ const comfortVariant: CarVariant = {
         16355000,
         {
           horsepower: 196,
+          engineDisplacement: 1987,
           consumption: 4.5,
           acceleration0to100: 7.4,
           topSpeed: 180,
           cargoVolumeSeatsUp: 581,
+          fuelTankCapacity: 43,
+          range: 956,
+          speakerCount: 6,
         },
         15355000
       ),
@@ -317,10 +361,14 @@ const comfortVariant: CarVariant = {
         16045000,
         {
           horsepower: 140,
+          engineDisplacement: 1798,
           consumption: 4.5,
           acceleration0to100: 9.1,
           topSpeed: 180,
           cargoVolumeSeatsUp: 596,
+          fuelTankCapacity: 43,
+          range: 956,
+          speakerCount: 8,
         },
         15045000
       ),
@@ -331,10 +379,14 @@ const comfortVariant: CarVariant = {
         16840000,
         {
           horsepower: 196,
+          engineDisplacement: 1987,
           consumption: 4.5,
           acceleration0to100: 7.4,
           topSpeed: 180,
           cargoVolumeSeatsUp: 581,
+          fuelTankCapacity: 43,
+          range: 956,
+          speakerCount: 8,
         },
         15840000
       ),
@@ -365,10 +417,14 @@ const comfortVariant: CarVariant = {
         16405000,
         {
           horsepower: 140,
+          engineDisplacement: 1798,
           consumption: 4.5,
           acceleration0to100: 9.1,
           topSpeed: 180,
           cargoVolumeSeatsUp: 596,
+          fuelTankCapacity: 43,
+          range: 956,
+          speakerCount: 8,
         },
         15405000
       ),
@@ -379,10 +435,14 @@ const comfortVariant: CarVariant = {
         17200000,
         {
           horsepower: 196,
+          engineDisplacement: 1987,
           consumption: 4.5,
           acceleration0to100: 7.4,
           topSpeed: 180,
           cargoVolumeSeatsUp: 581,
+          fuelTankCapacity: 43,
+          range: 956,
+          speakerCount: 8,
         },
         16200000
       ),
