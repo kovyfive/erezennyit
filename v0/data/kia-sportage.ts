@@ -48,17 +48,15 @@ const essenceVariant: CarVariant = {
       '160 T-GDI MT Benzin',
       EngineType.BENZIN,
       TransmissionType.MANUAL,
-      11399000,
+      10749000,
       mt,
-      10799000
     ),
     createEngineVariant(
       '160 T-GDI DCT Benzin',
       EngineType.BENZIN,
       TransmissionType.AUTOMATIC,
-      12299000,
+      11249000,
       dct,
-      11699000
     )
   ],
   features: {
@@ -135,14 +133,14 @@ const silverVariant: CarVariant = {
   ],
   features: {
     ...essenceVariant.features,
-      parkingAssistance: {
-        ...essenceVariant.features.parkingAssistance,
-        frontParkingSensor:  'PRO',
-      },
-      convenience: {
-        ...essenceVariant.features.convenience,
-        heatedFrontSeats: 'PRO',
-      }
+    parkingAssistance: {
+      ...essenceVariant.features.parkingAssistance,
+      frontParkingSensor: 'PRO',
+    },
+    convenience: {
+      ...essenceVariant.features.convenience,
+      heatedFrontSeats: 'PRO',
+    }
   },
   customColorPrices: colors,
   packages: [
@@ -202,24 +200,24 @@ const gold30Variant: CarVariant = {
       '160 T-GDI MT Benzin',
       EngineType.BENZIN,
       TransmissionType.MANUAL,
-      12149000,
+      12799000,
       mt,
-      11549000
+      12199000
     ),
     createEngineVariant(
       '160 T-GDI DCT Benzin',
       EngineType.BENZIN,
       TransmissionType.AUTOMATIC,
-      13149000,
+      13799000,
       dct,
-      12549000
+      13199000
     )
   ],
   features: {
     ...goldVariant.features,
     parkingAssistance: {
       ...goldVariant.features.parkingAssistance,
-      frontParkingSensor:  true,
+      frontParkingSensor: true,
     }
   },
   customColorPrices: colors,
@@ -234,17 +232,17 @@ const platinumVariant: CarVariant = {
       '160 T-GDI MT Benzin',
       EngineType.BENZIN,
       TransmissionType.MANUAL,
-      12149000,
+      12799000,
       mt,
-      11549000
+      12199000
     ),
     createEngineVariant(
       '160 T-GDI DCT Benzin',
       EngineType.BENZIN,
       TransmissionType.AUTOMATIC,
-      13149000,
+      13899000,
       dct,
-      12549000
+      13299000
     )
   ],
   features: {
