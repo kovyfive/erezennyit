@@ -134,25 +134,7 @@ const allureVariant: CarVariant = {
           speakerCount: 6,
         },
         11520000
-      ),
-      createEngineVariant(
-          'PHEV 195 LE e-DCT7',
-          EngineType.PHEV,
-          TransmissionType.HYBRID_AUTOMATIC,
-          17510000,
-          {
-            horsepower: 195,
-            engineDisplacement: 1598,
-            consumption: 1.2,
-            acceleration0to100: 7.6,
-            topSpeed: 225,
-            fuelTankCapacity: 42,
-            cargoVolumeSeatsUp: 361,
-            range: 85,
-            speakerCount: 6,
-          },
-          16010000
-        ),
+      )
     ],
     features: {
       ...styleVariant.features,
@@ -205,25 +187,7 @@ const allureVariant: CarVariant = {
           speakerCount: 6,
         },
         12540000
-      ),
-      createEngineVariant(
-          'PHEV 195 LE e-DCT7',
-          EngineType.PHEV,
-          TransmissionType.HYBRID_AUTOMATIC,
-          18750000,
-          {
-            horsepower: 195,
-            engineDisplacement: 1598,
-            consumption: 1.2,
-            acceleration0to100: 7.6,
-            topSpeed: 225,
-            fuelTankCapacity: 42,
-            cargoVolumeSeatsUp: 361,
-            range: 85,
-            speakerCount: 6,
-          },
-          17250000
-        ),
+      )
     ],
     features: {
         ...allureVariant.features,

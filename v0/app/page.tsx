@@ -9,6 +9,7 @@ import {
   EngineType,
   TransmissionType,
   NOT_AVAILABLE,
+  MISSING,
 } from "../model/model"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -320,6 +321,7 @@ export default function CarComparisonPage() {
     if (value === true) return "✅ Included"
     if (value === false) return "❌"
     if (value === NOT_AVAILABLE) return "⭕N/A"
+    if (value === MISSING) return "⭕N/A"
     if (typeof value === "string") return value
     if (typeof value === "number") return value.toString()
     return "⭕N/A"

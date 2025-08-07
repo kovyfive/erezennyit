@@ -148,25 +148,7 @@ const goldVariant: CarVariant = {
           speakerCount: 6,
         },
         14349000
-      ),
-      createEngineVariant(
-        '245 Plug-in Hybrid 4WD Benzin',
-        EngineType.PHEV,
-        TransmissionType.HYBRID_AUTOMATIC,
-        18349000,
-        {
-          horsepower: 265,
-          engineDisplacement: 1598,
-          consumption: 1.2,
-          acceleration0to100: 8.2,
-          topSpeed: 191,
-          fuelTankCapacity: 42,
-          cargoVolumeSeatsUp: 540,
-          range: 55,
-          speakerCount: 6,
-        },
-        17749000
-      ),
+      )
     ],
     features: {
       ...createDefaultFeatures(),
