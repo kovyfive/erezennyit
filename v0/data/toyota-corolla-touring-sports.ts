@@ -180,8 +180,8 @@ const comfortVariant: CarVariant = {
       ...comfortVariant.features,
       parkingAssistance: {
           ...comfortVariant.features.parkingAssistance,
-          frontParkingSensors: true,
-          rearParkingSensors: true,
+          frontParkingSensor: true,
+          rearParkingSensor: true,
       },
       convenience: {
             ...comfortVariant.features.convenience,

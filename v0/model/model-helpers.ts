@@ -3,6 +3,7 @@ import {
   TransmissionType, 
   TechnicalSpecs, 
   NOT_AVAILABLE, 
+  MISSING,
   EngineVariant, 
   Features,
   Package,
@@ -50,47 +51,47 @@ export function createEngineVariant(
 export function createDefaultFeatures(): Features {
   return {
     safety: {
-      laneKeepAssist: false,
-      cruiseControl: false,
-      smartCruiseControl: false,
-      smartCruiseControlWithStopAndGo: false,
-      blindSpotCollisionAvoidanceAssist: false,
-      isofix: false,
+      laneKeepAssist: MISSING,
+      cruiseControl: MISSING,
+      smartCruiseControl: MISSING,
+      smartCruiseControlWithStopAndGo: MISSING,
+      blindSpotCollisionAvoidanceAssist: MISSING,
+      isofix: MISSING,
     },
     parkingAssistance: {
-      reversingRadar: false,
-      frontParkingSensor: false,
-      rearParkingSensor: false,
-      parkingCameras: false,
-      parkingCameras360View: false,
-      semiOrFullAutomaticParkingAssistant: false,
-      electricParkingBrake: false,
+      reversingRadar: MISSING,
+      frontParkingSensor: MISSING,
+      rearParkingSensor: MISSING,
+      parkingCameras: MISSING,
+      parkingCameras360View: MISSING,
+      semiOrFullAutomaticParkingAssistant: MISSING,
+      electricParkingBrake: MISSING,
     },
     convenience: {
-      keylessStart: false,
-      wirelessPhoneCharger: false,
-      powerTailgate: false,
-      powerTailgateWithFootSensor: false,
-      frontPowerWindows: false,
-      rearPowerWindows: false,
-      heatedFrontSeats: false,
-      heatedRearSeats: false,
-      dualZoneAC: false,
-      headUpDisplay: false,
+      keylessStart: MISSING,
+      wirelessPhoneCharger: MISSING,
+      powerTailgate: MISSING,
+      powerTailgateWithFootSensor: MISSING,
+      frontPowerWindows: MISSING,
+      rearPowerWindows: MISSING,
+      heatedFrontSeats: MISSING,
+      heatedRearSeats: MISSING,
+      dualZoneAC: MISSING,
+      headUpDisplay: MISSING,
     },
     entertainment: {
-      premiumSpeaker: false,
-      wiredCarPlayAndroidAuto: false,
-      wirelessCarPlayAndroidAuto: false,
+      premiumSpeaker: MISSING,
+      wiredCarPlayAndroidAuto: MISSING,
+      wirelessCarPlayAndroidAuto: MISSING,
     },
     interiorExterior: {
-      spareTire: false,
-      metalPedals: false,
-      paddleShifters: false,
-      velourFloorMats: false,
-      rubberMats: false,
-      tintedRearWindows: false,
-      roofRails: false,
+      spareTire: MISSING,
+      metalPedals: MISSING,
+      paddleShifters: MISSING,
+      velourFloorMats: MISSING,
+      rubberMats: MISSING,
+      tintedRearWindows: MISSING,
+      roofRails: MISSING,
     }
   };
 }
@@ -181,7 +182,7 @@ export class CarModelImpl implements CarModel {
         const normalizedKey = camelToProperty(key);
         if (selectedFeatures.includes(normalizedKey) || selectedFeatures.includes(key)) {
           // If the feature is not available, return max value
-          if (value === false) {
+          if (value === MISSING) {
             return {
               basePrice: Number.MAX_VALUE,
               requiredPackages: []

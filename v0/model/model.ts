@@ -5,6 +5,7 @@
 
 // Constants for unavailable data
 export const NOT_AVAILABLE = "N/A";
+export const MISSING = false;
 
 // Enum types for common values
 export enum EngineType {

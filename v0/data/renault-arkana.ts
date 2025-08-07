@@ -64,8 +64,8 @@ const technoVariant: CarVariant = {
     parkingAssistance: {
         ...createDefaultFeatures().parkingAssistance,
         reversingRadar: true,
-        frontParkingSensors: true,
-        rearParkingSensors: true,
+        frontParkingSensor: true,
+        rearParkingSensor: true,
         parkingCameras: true,
     },
     convenience: {

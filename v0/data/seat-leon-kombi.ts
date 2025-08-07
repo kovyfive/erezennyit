@@ -44,8 +44,8 @@ const jubileumVariant: CarVariant = {
     },
     parkingAssistance: {
         ...createDefaultFeatures().parkingAssistance,
-        frontParkingSensors: true,
-        rearParkingSensors: true,
+        frontParkingSensor: true,
+        rearParkingSensor: true,
     },
     convenience: {
         ...createDefaultFeatures().convenience,
@@ -269,24 +269,7 @@ const styleVariant: CarVariant = {
               range: 865,
               speakerCount: 7,
             },
-          ),
-          createEngineVariant(
-            '1.5 TSI DSG FR pHEV',
-            EngineType.PHEV,
-            TransmissionType.AUTOMATIC,
-            17516940,
-            {
-              horsepower: 150,
-              engineDisplacement: 1395,
-              consumption: 0.1,
-              acceleration0to100: 7.7,
-              topSpeed: 220,
-              fuelTankCapacity: 40,
-              cargoVolumeSeatsUp: 470,
-              range: 100,
-              speakerCount: 7,
-            },
-          ),
+          )
     ],
     features: {
         ...styleVariant.features,

@@ -158,7 +158,7 @@ const allureVariant: CarVariant = {
       ...styleVariant.features,
       parkingAssistance: {
           ...styleVariant.features.parkingAssistance,
-          frontParkingSensors: true,
+          frontParkingSensor: true,
           parkingCameras: true,
       },
     },
