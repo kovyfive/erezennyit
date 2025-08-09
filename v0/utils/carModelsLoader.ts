@@ -14,9 +14,11 @@ const CAR_MODEL_FILES = [
   // 'opel-grandland',
   // 'peugeot-308',
   // 'renault-arkana',
-  'seat-leon-kombi',
-  'toyota-corolla-sedan',
-  'toyota-corolla-touring-sports'
+  'seat-leon-kombi',// ✅
+  'toyota-corolla-sedan',// ✅
+  'toyota-corolla-touring-sports', // ✅
+  'hyundai-kona', // ✅
+  'toyota-c-hr', // ✅
 ];
 
 /**
