@@ -54,7 +54,7 @@ const activeVariant: CarVariant = {
       cruiseControl: true,
       smartCruiseControl: true,
       smartCruiseControlWithStopAndGo: true,
-      blindSpotCollisionAvoidanceAssist: true,
+      blindSpotCollisionAvoidanceAssist: false,
       isofix: true,
     },
     parkingAssistance: {
@@ -127,6 +127,10 @@ const comfortVariant: CarVariant = {
   ],
   features: {
     ...activeVariant.features,
+    safety: {
+      ...activeVariant.features.safety,
+      blindSpotCollisionAvoidanceAssist: 'Tech',
+    },
     parkingAssistance: {
       ...activeVariant.features.parkingAssistance,
       frontParkingSensor: 'Tech',
@@ -178,6 +182,7 @@ const grSportVariant: CarVariant = {
     ...comfortVariant.features,
     safety: {
       ...comfortVariant.features.safety,
+      blindSpotCollisionAvoidanceAssist: true,
     },
     parkingAssistance: {
       ...comfortVariant.features.parkingAssistance,
@@ -193,13 +198,16 @@ const grSportVariant: CarVariant = {
     },
     interiorExterior: {
       ...comfortVariant.features.interiorExterior,
-      spareTire: false,
+      spareTire: 'Pótkerék',
       tintedRearWindows: true,
       leatherSeats: true,
     }
   },
   customColorPrices: grSportColors,
-  packages: [{ name: 'Gumiszőnyeg', price: 37100 }, { name: 'Tetőcsomagtartó', price: 172100 }],
+  packages: [{ name: 'Gumiszőnyeg', price: 37100 },
+  { name: 'Tetőcsomagtartó', price: 172100 },
+  { name: 'Pótkerék', price: 99000 }
+  ],
   leatherSeatPackages: []
 };
 
@@ -229,6 +237,7 @@ const executiveVariant: CarVariant = {
     ...comfortVariant.features,
     safety: {
       ...comfortVariant.features.safety,
+      blindSpotCollisionAvoidanceAssist: true,
     },
     convenience: {
       ...comfortVariant.features.convenience,
@@ -238,14 +247,20 @@ const executiveVariant: CarVariant = {
     },
     interiorExterior: {
       ...comfortVariant.features.interiorExterior,
-      spareTire: false,
+      spareTire: 'Pótkerék',
+
       tintedRearWindows: true,
       leatherSeats: true,
     }
   },
   customColorPrices: colors,
-  packages: [{ name: 'Gumiszőnyeg', price: 37100 }, { name: 'Tetőcsomagtartó', price: 172100 }],
-  leatherSeatPackages: []
+  packages: [{ name: 'Gumiszőnyeg', price: 37100 },
+  { name: 'Tetőcsomagtartó', price: 172100 },
+  { name: 'Pótkerék', price: 99000 }
+  ],
+  leatherSeatPackages: [
+    { name: 'Prémium üléshuzatok', price: 37100 },
+  ]
 };
 
 
