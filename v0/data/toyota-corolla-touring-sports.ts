@@ -234,10 +234,12 @@ const grSportVariant: CarVariant = {
     convenience: {
       ...comfortVariant.features.convenience,
       powerTailgate: 'Dynamic',
+      powerTailgateWithFootSensor: 'Dynamic',
       wirelessPhoneCharger: true,
       heatedFrontSeats: true,
       headUpDisplay: 'Dynamic JBL',
       rainSensingWipers: true,
+      
     },
     entertainment: {
       ...comfortVariant.features.entertainment,
@@ -248,6 +250,7 @@ const grSportVariant: CarVariant = {
       spareTire: 'Pótkerék',
       tintedRearWindows: true,
       leatherSeats: true,
+
     },
   },
   customColorPrices: grSportColors,
@@ -317,6 +320,10 @@ const executiveJblVariant: CarVariant = {
       headUpDisplay: true,
       wirelessPhoneCharger: true,
       rainSensingWipers: true,
+      powerTailgate: false,
+      powerTailgateWithFootSensor: false,
+      heatedFrontSeats: true,
+
     },
     entertainment: {
       ...comfortVariant.features.entertainment,
@@ -327,6 +334,7 @@ const executiveJblVariant: CarVariant = {
       spareTire: 'Pótkerék',
       tintedRearWindows: true,
       leatherSeats: true,
+      
     }
   },
   customColorPrices: colors,

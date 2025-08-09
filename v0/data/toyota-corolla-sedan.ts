@@ -245,6 +245,11 @@ const executiveVariant: CarVariant = {
       ...comfortVariant.features.safety,
       blindSpotCollisionAvoidanceAssist: true,
     },
+    parkingAssistance: {
+      ...activeVariant.features.parkingAssistance,
+      frontParkingSensor: true,
+      rearParkingSensor: true,
+    },
     convenience: {
       ...comfortVariant.features.convenience,
       wirelessPhoneCharger: true,
@@ -254,7 +259,6 @@ const executiveVariant: CarVariant = {
     interiorExterior: {
       ...comfortVariant.features.interiorExterior,
       spareTire: 'Pótkerék',
-
       tintedRearWindows: true,
       leatherSeats: true,
     }

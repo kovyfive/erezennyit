@@ -193,7 +193,10 @@ const goldVariant: CarVariant = {
     }
   },
   customColorPrices: colors,
-  packages: [],
+  packages: [
+    { name: 'PRO', price: 200000 },
+    { name: 'SCC', price: 200000 },
+  ],
   leatherSeatPackages: []
 };
 
@@ -277,6 +280,8 @@ const platinumVariant: CarVariant = {
   packages: [
     { name: 'Drive Wise', price: 200000 },
     { name: 'Exclusive', price: 450000 },
+    { name: 'PRO', price: 200000 },
+    { name: 'SCC', price: 200000 },
   ],
   leatherSeatPackages: [
     { name: 'BŐR', price: 500000 }
