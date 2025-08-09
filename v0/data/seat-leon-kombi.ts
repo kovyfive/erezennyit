@@ -49,7 +49,7 @@ const jubileumVariant: CarVariant = {
       smartCruiseControl: false,
       smartCruiseControlWithStopAndGo: NOT_INCLUDED,
       blindSpotCollisionAvoidanceAssist: false,
-      isofix: MISSING,
+      isofix: true,
     },
     parkingAssistance: {
       reversingRadar: true,

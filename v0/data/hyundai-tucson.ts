@@ -6,7 +6,6 @@ import {
   CarVariant,
   MISSING,
   NOT_INCLUDED,
-  NOT_AVAILABLE,
 } from '../model/model';
 import {
   createEngineVariant,

@@ -1,5 +1,5 @@
 
-import { CarModel, EngineType, TransmissionType, DiscountTarget, CarVariant, MISSING, NOT_AVAILABLE, Features } from '../model/model';
+import { CarModel, EngineType, TransmissionType, DiscountTarget, CarVariant, MISSING, NOT_INCLUDED, Features } from '../model/model';
 import { createCarModel } from '../model/model-helpers';
 import { createEngineVariant, createDefaultFeatures } from '../model/model-helpers';
 
@@ -28,37 +28,37 @@ const trendVariant: Features = {
     parkingAssistance: {
       reversingRadar: true,
       frontParkingSensor: true,
-      rearParkingSensor: NOT_AVAILABLE,
+      rearParkingSensor: NOT_INCLUDED,
       parkingCameras: true,
-      parkingCameras360View: NOT_AVAILABLE,
-      semiOrFullAutomaticParkingAssistant: NOT_AVAILABLE,
+      parkingCameras360View: NOT_INCLUDED,
+      semiOrFullAutomaticParkingAssistant: NOT_INCLUDED,
       electricParkingBrake: false,
     },
     convenience: {
       keylessStart: false,
       wirelessPhoneCharger: false,
-      powerTailgate: NOT_AVAILABLE,
-      powerTailgateWithFootSensor: NOT_AVAILABLE,
+      powerTailgate: NOT_INCLUDED,
+      powerTailgateWithFootSensor: NOT_INCLUDED,
       frontPowerWindows: true,
       rearPowerWindows: "Kényelmi",
       heatedFrontSeats: true,
       heatedRearSeats: false,
       dualZoneAC: false,
-      headUpDisplay: NOT_AVAILABLE,
+      headUpDisplay: NOT_INCLUDED,
     },
     entertainment: {
-      premiumSpeaker: NOT_AVAILABLE,
+      premiumSpeaker: NOT_INCLUDED,
       wiredCarPlayAndroidAuto: true,
-      wirelessCarPlayAndroidAuto: NOT_AVAILABLE,
+      wirelessCarPlayAndroidAuto: NOT_INCLUDED,
     },
     interiorExterior: {
-      spareTire: NOT_AVAILABLE,
+      spareTire: NOT_INCLUDED,
       metalPedals: false,
-      paddleShifters: NOT_AVAILABLE,
-      velourFloorMats: NOT_AVAILABLE,
-      rubberMats: NOT_AVAILABLE,
+      paddleShifters: NOT_INCLUDED,
+      velourFloorMats: NOT_INCLUDED,
+      rubberMats: NOT_INCLUDED,
       tintedRearWindows: false,
-      roofRails: NOT_AVAILABLE,
+      roofRails: NOT_INCLUDED,
       slidingCenterConsole: false,
       leatherSeats: false,
     }
