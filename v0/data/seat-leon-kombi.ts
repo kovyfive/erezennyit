@@ -1,16 +1,24 @@
 
-import { CarModel, EngineType, TransmissionType, DiscountTarget, CarVariant } from '../model/model';
+import { CarModel, EngineType, TransmissionType, DiscountTarget, CarVariant, MISSING, NOT_INCLUDED } from '../model/model';
 import { createCarModel } from '../model/model-helpers';
 import { createEngineVariant, createDefaultFeatures } from '../model/model-helpers';
 
 const colors = [
-    { name: 'Fiord kék', price: 0 },
-    { name: 'Desire piros metál', price: 476250 },
-    { name: 'Gleccser fehér metál', price: 283210 },
-    { name: 'Magnetic szürke metál', price: 283210 },
-    { name: 'Midnight fekete metál', price: 283210 },
-    { name: 'Zafír kék metál', price: 283210 },
-    { name: 'Grafén szürke metál', price: 476250 },
+  { name: 'Fiord kék', price: 0 },
+  { name: 'Desire piros metál', price: 476250 },
+  { name: 'Gleccser fehér metál', price: 283210 },
+  { name: 'Magnetic szürke metál', price: 283210 },
+  { name: 'Midnight fekete metál', price: 283210 },
+  { name: 'Zafír kék metál', price: 283210 },
+  { name: 'Grafén szürke metál', price: 476250 },
+];
+
+const commonPackages = [
+  { name: 'Tolatókamera', price: 129540 },
+  { name: 'Connectivity box', price: 102870 },
+  { name: 'Elektromos csomagtér-nyitás', price: 245110 },
+  { name: 'Full link', price: 87630 },
+
 ];
 
 const jubileumVariant: CarVariant = {
@@ -35,253 +43,260 @@ const jubileumVariant: CarVariant = {
     ),
   ],
   features: {
-    ...createDefaultFeatures(),
     safety: {
-        ...createDefaultFeatures().safety,
-        laneKeepAssist: true,
-        cruiseControl: true,
-        isofix: true,
+      laneKeepAssist: true,
+      cruiseControl: true,
+      smartCruiseControl: false,
+      smartCruiseControlWithStopAndGo: NOT_INCLUDED,
+      blindSpotCollisionAvoidanceAssist: false,
+      isofix: MISSING,
     },
     parkingAssistance: {
-        ...createDefaultFeatures().parkingAssistance,
-        frontParkingSensor: true,
-        rearParkingSensor: true,
+      reversingRadar: true,
+      frontParkingSensor: true,
+      rearParkingSensor: true,
+      parkingCameras: 'Tolatókamera',
+      parkingCameras360View: NOT_INCLUDED,
+      semiOrFullAutomaticParkingAssistant: NOT_INCLUDED,
+      electricParkingBrake: true,
     },
     convenience: {
-        ...createDefaultFeatures().convenience,
-        keylessStart: true,
-        frontPowerWindows: true,
-        rearPowerWindows: true,
-        heatedFrontSeats: true,
+      keylessStart: true,
+      wirelessPhoneCharger: 'Connectivity box',
+      powerTailgate: 'Elektromos csomagtér-nyitás',
+      powerTailgateWithFootSensor: 'Elektromos csomagtér-nyitás',
+      frontPowerWindows: true,
+      rearPowerWindows: true,
+      heatedFrontSeats: true,
+      heatedRearSeats: NOT_INCLUDED,
+      dualZoneAC: 'Komfort',
+      headUpDisplay: NOT_INCLUDED,
     },
     entertainment: {
-        ...createDefaultFeatures().entertainment,
-        wiredCarPlayAndroidAuto: true,
+      premiumSpeaker: NOT_INCLUDED,
+      wiredCarPlayAndroidAuto: 'Full link',
+      wirelessCarPlayAndroidAuto: 'Full link',
     },
     interiorExterior: {
-        ...createDefaultFeatures().interiorExterior,
-        roofRails: true,
+      spareTire: true,
+      metalPedals: NOT_INCLUDED,
+      paddleShifters: false,
+      velourFloorMats: NOT_INCLUDED,
+      rubberMats: NOT_INCLUDED,
+      tintedRearWindows: 'Sötét üveg',
+      roofRails: true,
+      slidingCenterConsole: 'Komfort',
+      leatherSeats: NOT_INCLUDED,
     }
   },
   customColorPrices: colors,
-  packages: [],
+  packages: [
+    ...commonPackages,
+    { name: 'Komfort', price: 180340 },
+    { name: 'Sötét üveg', price: 129540 },
+
+  ],
   leatherSeatPackages: []
 };
 
 const styleVariant: CarVariant = {
-    variantName: 'Style',
-    engineVariants: [
-      createEngineVariant(
-        '1.5 TSI Style',
-        EngineType.BENZIN,
-        TransmissionType.MANUAL,
-        10962195,
-        {
-          horsepower: 115,
-          engineDisplacement: 1498,
-          consumption: 5.6,
-          acceleration0to100: 10.2,
-          topSpeed: 202,
-          fuelTankCapacity: 45,
-          cargoVolumeSeatsUp: 620,
-          range: 804,
-          speakerCount: 7,
-        },
-      ),
-      createEngineVariant(
-        '1.5 TSI Style',
-        EngineType.BENZIN,
-        TransmissionType.MANUAL,
-        11831150,
-        {
-          horsepower: 150,
-          engineDisplacement: 1498,
-          consumption: 5.6,
-          acceleration0to100: 8.9,
-          topSpeed: 221,
-          fuelTankCapacity: 45,
-          cargoVolumeSeatsUp: 620,
-          range: 804,
-          speakerCount: 7,
-        },
-      ),
-      createEngineVariant(
-        '2.0 TDI Style',
-        EngineType.DIESEL,
-        TransmissionType.MANUAL,
-        12256325,
-        {
-          horsepower: 115,
-          engineDisplacement: 1968,
-          consumption: 4.6,
-          acceleration0to100: 10.5,
-          topSpeed: 202,
-          fuelTankCapacity: 45,
-          cargoVolumeSeatsUp: 620,
-          range: 978,
-          speakerCount: 7,
-        },
-      ),
-      createEngineVariant(
-        '2.0 TDI DSG Style',
-        EngineType.DIESEL,
-        TransmissionType.AUTOMATIC,
-        13949510,
-        {
-          horsepower: 150,
-          engineDisplacement: 1968,
-          consumption: 4.8,
-          acceleration0to100: 8.9,
-          topSpeed: 218,
-          fuelTankCapacity: 45,
-          cargoVolumeSeatsUp: 620,
-          range: 938,
-          speakerCount: 7,
-        },
-      ),
-      createEngineVariant(
-        '1.5 TSI DSG Style mHEV',
-        EngineType.MILD_HYBRID,
-        TransmissionType.AUTOMATIC,
-        12152185,
-        {
-          horsepower: 115,
-          engineDisplacement: 1498,
-          consumption: 5.2,
-          acceleration0to100: 10.2,
-          topSpeed: 202,
-          fuelTankCapacity: 45,
-          cargoVolumeSeatsUp: 620,
-          range: 865,
-          speakerCount: 7,
-        },
-      ),
-      createEngineVariant(
-        '1.5 TSI DSG Style mHEV',
-        EngineType.MILD_HYBRID,
-        TransmissionType.AUTOMATIC,
-        13019870,
-        {
-          horsepower: 150,
-          engineDisplacement: 1498,
-          consumption: 5.2,
-          acceleration0to100: 8.9,
-          topSpeed: 221,
-          fuelTankCapacity: 45,
-          cargoVolumeSeatsUp: 620,
-          range: 865,
-          speakerCount: 7,
-        },
-      ),
-    ],
-    features: {
-      ...jubileumVariant.features,
+  variantName: 'Style',
+  engineVariants: [
+    createEngineVariant(
+      '1.5 TSI Style',
+      EngineType.BENZIN,
+      TransmissionType.MANUAL,
+      10962195,
+      {
+        horsepower: 115,
+        engineDisplacement: 1498,
+        consumption: 5.6,
+        acceleration0to100: 10.2,
+        topSpeed: 202,
+        fuelTankCapacity: 45,
+        cargoVolumeSeatsUp: 620,
+        range: 804,
+        speakerCount: 7,
+      },
+    ),
+    createEngineVariant(
+      '1.5 TSI Style',
+      EngineType.BENZIN,
+      TransmissionType.MANUAL,
+      11831150,
+      {
+        horsepower: 150,
+        engineDisplacement: 1498,
+        consumption: 5.6,
+        acceleration0to100: 8.9,
+        topSpeed: 221,
+        fuelTankCapacity: 45,
+        cargoVolumeSeatsUp: 620,
+        range: 804,
+        speakerCount: 7,
+      },
+    ),
+    createEngineVariant(
+      '1.5 TSI DSG Style mHEV',
+      EngineType.MILD_HYBRID,
+      TransmissionType.AUTOMATIC,
+      12152185,
+      {
+        horsepower: 115,
+        engineDisplacement: 1498,
+        consumption: 5.2,
+        acceleration0to100: 10.2,
+        topSpeed: 202,
+        fuelTankCapacity: 45,
+        cargoVolumeSeatsUp: 620,
+        range: 865,
+        speakerCount: 7,
+      },
+    ),
+    createEngineVariant(
+      '1.5 TSI DSG Style mHEV',
+      EngineType.MILD_HYBRID,
+      TransmissionType.AUTOMATIC,
+      13019870,
+      {
+        horsepower: 150,
+        engineDisplacement: 1498,
+        consumption: 5.2,
+        acceleration0to100: 8.9,
+        topSpeed: 221,
+        fuelTankCapacity: 45,
+        cargoVolumeSeatsUp: 620,
+        range: 865,
+        speakerCount: 7,
+      },
+    ),
+  ],
+  features: {
+    ...jubileumVariant.features,
+    convenience: {
+      ...jubileumVariant.features.convenience,
+      heatedFrontSeats: 'Téli',
     },
-    customColorPrices: colors,
-    packages: [],
-    leatherSeatPackages: []
-  };
+    interiorExterior: {
+      ...jubileumVariant.features.interiorExterior,
+      paddleShifters: true,
+    }
 
-  const frVariant: CarVariant = {
-    variantName: 'FR',
-    engineVariants: [
-        createEngineVariant(
-            '1.5 TSI FR',
-            EngineType.BENZIN,
-            TransmissionType.MANUAL,
-            11833415,
-            {
-              horsepower: 115,
-              engineDisplacement: 1498,
-              consumption: 5.6,
-              acceleration0to100: 10.2,
-              topSpeed: 202,
-              fuelTankCapacity: 45,
-              cargoVolumeSeatsUp: 620,
-              range: 804,
-              speakerCount: 7,
-            },
-          ),
-          createEngineVariant(
-            '1.5 TSI FR',
-            EngineType.BENZIN,
-            TransmissionType.MANUAL,
-            12702370,
-            {
-              horsepower: 150,
-              engineDisplacement: 1498,
-              consumption: 5.6,
-              acceleration0to100: 8.9,
-              topSpeed: 221,
-              fuelTankCapacity: 45,
-              cargoVolumeSeatsUp: 620,
-              range: 804,
-              speakerCount: 7,
-            },
-          ),
-          createEngineVariant(
-            '2.0 TDI DSG FR',
-            EngineType.DIESEL,
-            TransmissionType.AUTOMATIC,
-            14820730,
-            {
-              horsepower: 150,
-              engineDisplacement: 1968,
-              consumption: 4.7,
-              acceleration0to100: 8.9,
-              topSpeed: 218,
-              fuelTankCapacity: 45,
-              cargoVolumeSeatsUp: 620,
-              range: 957,
-              speakerCount: 7,
-            },
-          ),
-          createEngineVariant(
-            '1.5 TSI DSG FR mHEV',
-            EngineType.MILD_HYBRID,
-            TransmissionType.AUTOMATIC,
-            13028485,
-            {
-              horsepower: 115,
-              engineDisplacement: 1498,
-              consumption: 5.2,
-              acceleration0to100: 10.2,
-              topSpeed: 202,
-              fuelTankCapacity: 45,
-              cargoVolumeSeatsUp: 620,
-              range: 865,
-              speakerCount: 7,
-            },
-          ),
-          createEngineVariant(
-            '1.5 TSI DSG FR mHEV',
-            EngineType.MILD_HYBRID,
-            TransmissionType.AUTOMATIC,
-            13896170,
-            {
-              horsepower: 150,
-              engineDisplacement: 1498,
-              consumption: 5.2,
-              acceleration0to100: 8.9,
-              topSpeed: 221,
-              fuelTankCapacity: 45,
-              cargoVolumeSeatsUp: 620,
-              range: 865,
-              speakerCount: 7,
-            },
-          )
-    ],
-    features: {
-        ...styleVariant.features,
-        interiorExterior: {
-            ...styleVariant.features.interiorExterior,
-            tintedRearWindows: true,
-        }
+  },
+  customColorPrices: colors,
+  packages: [
+    ...commonPackages,
+    { name: 'Téli', price: 196850 },
+    { name: 'Komfort', price: 180340 },
+    { name: 'Sötét üveg', price: 129540 },
+
+  ],
+  leatherSeatPackages: []
+};
+
+const frVariant: CarVariant = {
+  variantName: 'FR',
+  engineVariants: [
+    createEngineVariant(
+      '1.5 TSI FR',
+      EngineType.BENZIN,
+      TransmissionType.MANUAL,
+      11833415,
+      {
+        horsepower: 115,
+        engineDisplacement: 1498,
+        consumption: 5.6,
+        acceleration0to100: 10.2,
+        topSpeed: 202,
+        fuelTankCapacity: 45,
+        cargoVolumeSeatsUp: 620,
+        range: 804,
+        speakerCount: 7,
+      },
+    ),
+    createEngineVariant(
+      '1.5 TSI FR',
+      EngineType.BENZIN,
+      TransmissionType.MANUAL,
+      12702370,
+      {
+        horsepower: 150,
+        engineDisplacement: 1498,
+        consumption: 5.6,
+        acceleration0to100: 8.9,
+        topSpeed: 221,
+        fuelTankCapacity: 45,
+        cargoVolumeSeatsUp: 620,
+        range: 804,
+        speakerCount: 7,
+      },
+    ),
+    createEngineVariant(
+      '1.5 TSI DSG FR mHEV',
+      EngineType.MILD_HYBRID,
+      TransmissionType.AUTOMATIC,
+      13028485,
+      {
+        horsepower: 115,
+        engineDisplacement: 1498,
+        consumption: 5.2,
+        acceleration0to100: 10.2,
+        topSpeed: 202,
+        fuelTankCapacity: 45,
+        cargoVolumeSeatsUp: 620,
+        range: 865,
+        speakerCount: 7,
+      },
+    ),
+    createEngineVariant(
+      '1.5 TSI DSG FR mHEV',
+      EngineType.MILD_HYBRID,
+      TransmissionType.AUTOMATIC,
+      13896170,
+      {
+        horsepower: 150,
+        engineDisplacement: 1498,
+        consumption: 5.2,
+        acceleration0to100: 8.9,
+        topSpeed: 221,
+        fuelTankCapacity: 45,
+        cargoVolumeSeatsUp: 620,
+        range: 865,
+        speakerCount: 7,
+      },
+    )
+  ],
+  features: {
+    ...styleVariant.features,
+    safety: {
+      ...styleVariant.features.safety,
+      smartCruiseControl: 'Biztonság L',
+      blindSpotCollisionAvoidanceAssist: 'Biztonság L'
     },
-    customColorPrices: colors,
-    packages: [],
-    leatherSeatPackages: []
-  };
+    convenience: {
+      ...styleVariant.features.convenience,
+      dualZoneAC: 'FR',
+    },
+    entertainment: {
+      ...styleVariant.features.entertainment,
+      wiredCarPlayAndroidAuto: true,
+      wirelessCarPlayAndroidAuto: true,
+    },
+    interiorExterior: {
+      ...styleVariant.features.interiorExterior,
+      tintedRearWindows: true,
+      slidingCenterConsole: 'FR',
+    },
+  },
+  customColorPrices: colors,
+  packages: [
+    { name: 'Biztonság L', price: 344170 },
+    { name: 'Téli', price: 196850 },
+    { name: 'FR', price: 3000990 },
+    ...commonPackages
+  ],
+  leatherSeatPackages: []
+};
 
 
 const modelName = createCarModel(
