@@ -183,10 +183,29 @@ export default function CarComparisonPage() {
 
     // Sort by calculated price
     filtered.sort((a, b) => {
-      const priceA =
-        a.calculatedPrice !== undefined && a.calculatedPrice !== Number.MAX_VALUE ? a.calculatedPrice : a.basePrice
-      const priceB =
-        b.calculatedPrice !== undefined && b.calculatedPrice !== Number.MAX_VALUE ? b.calculatedPrice : b.basePrice
+      let priceA, priceB
+
+      // Calculate price for a
+      if (a.calculatedPrice !== undefined && a.calculatedPrice !== Number.MAX_VALUE) {
+        if (a.engine.discountedPrice) {
+          priceA = a.engine.discountedPrice + (a.calculatedPrice - a.basePrice)
+        } else {
+          priceA = a.calculatedPrice
+        }
+      } else {
+        priceA = a.engine.discountedPrice ? a.engine.discountedPrice : a.basePrice
+      }
+
+      // Calculate price for b
+      if (b.calculatedPrice !== undefined && b.calculatedPrice !== Number.MAX_VALUE) {
+        if (b.engine.discountedPrice) {
+          priceB = b.engine.discountedPrice + (b.calculatedPrice - b.basePrice)
+        } else {
+          priceB = b.calculatedPrice
+        }
+      } else {
+        priceB = b.engine.discountedPrice ? b.engine.discountedPrice : b.basePrice
+      }
 
       if (a.calculatedPrice === Number.MAX_VALUE) return 1
       if (b.calculatedPrice === Number.MAX_VALUE) return -1
@@ -450,19 +469,46 @@ export default function CarComparisonPage() {
                           <div className="text-xs text-gray-600">{combo.variant.variantName}</div>
                           <div className="text-xs text-gray-500">{combo.engine.listedEngineName}</div>
                           <div className="text-xs">
-                            <div className="font-medium">{combo.basePrice.toLocaleString()} Ft</div>
-                            {combo.calculatedPrice && combo.calculatedPrice !== Number.MAX_VALUE && (
-                              <div className="text-blue-600 font-medium">{combo.calculatedPrice.toLocaleString()} Ft</div>
-                            )}
-                            {combo.calculatedPrice === Number.MAX_VALUE && (
-                              <div className="text-red-600 font-medium text-xs">Not Available</div>
-                            )}
-                            {combo.requiredPackages.length > 0 && combo.calculatedPrice !== Number.MAX_VALUE && (
-                              <div className="text-xs text-gray-500 mt-1">
-                                +{combo.requiredPackages.length} package{combo.requiredPackages.length > 1 ? "s" : ""}
-                              </div>
+                            {combo.engine.discountedPrice ? (
+                              <>
+                                <span className="line-through text-gray-500">
+                                  {combo.basePrice.toLocaleString()} Ft
+                                </span>
+                                <br/>
+                                <span className="font-medium ml-1">
+                                  {combo.engine.discountedPrice.toLocaleString()} Ft
+                                </span>
+                              </>
+                            ) : (
+                              <span className="font-medium">{combo.basePrice.toLocaleString()} Ft</span>
                             )}
                           </div>
+                          {combo.calculatedPrice && combo.calculatedPrice !== Number.MAX_VALUE && (
+                            <div>
+                              <div className="text-xs text-gray-500 mt-1">
+                                +{combo.requiredPackages.length} package
+                                {combo.requiredPackages.length > 1 ? "s" : ""}
+                              </div>
+                              {combo.engine.discountedPrice ? (
+                                <>
+                                  <span className="line-through text-xs text-gray-500">
+                                    {combo.calculatedPrice.toLocaleString()} Ft
+                                  </span>
+                                  <br/>
+                                  <span className="text-violet-600 ml-1">
+                                    {(combo.engine.discountedPrice + (combo.calculatedPrice - combo.basePrice)).toLocaleString()} Ft
+                                  </span>
+                                </>
+                              ) : (
+                                <div className="text-blue-600 font-medium">
+                                  {combo.calculatedPrice.toLocaleString()} Ft
+                                </div>
+                              )}
+                            </div>
+                          )}
+                          {combo.calculatedPrice === Number.MAX_VALUE && (
+                            <div className="text-red-600 font-medium text-xs">Not Available</div>
+                          )}
                         </div>
                       </th>
                     ))}
