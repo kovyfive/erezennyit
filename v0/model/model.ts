@@ -69,7 +69,7 @@ export interface SafetyFeatures {
   smartCruiseControlWithStopAndGo: FeatureAvailability;
   blindSpotCollisionAvoidanceAssist: FeatureAvailability;
   isofix: FeatureAvailability;
-  //frontIsofix: FeatureAvailability;
+  frontIsofix: FeatureAvailability;
 }
 
 // Parking and driving assistance

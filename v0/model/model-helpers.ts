@@ -55,6 +55,7 @@ export function createDefaultFeatures(): Features {
       smartCruiseControlWithStopAndGo: MISSING,
       blindSpotCollisionAvoidanceAssist: MISSING,
       isofix: MISSING,
+      frontIsofix: MISSING,
     },
     parkingAssistance: {
       reversingRadar: MISSING,

@@ -64,6 +64,7 @@ const comfortVariant: CarVariant = {
       smartCruiseControlWithStopAndGo: true,
       blindSpotCollisionAvoidanceAssist: false,
       isofix: true,
+      frontIsofix: NOT_INCLUDED,
     },
     parkingAssistance: {
       reversingRadar: true,

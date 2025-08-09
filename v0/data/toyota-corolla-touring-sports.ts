@@ -59,6 +59,7 @@ const activeVariant: CarVariant = {
       smartCruiseControlWithStopAndGo: true,
       blindSpotCollisionAvoidanceAssist: false,
       isofix: true,
+      frontIsofix: NOT_INCLUDED,
     },
     parkingAssistance: {
       reversingRadar: false,

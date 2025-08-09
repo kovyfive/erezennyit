@@ -41,6 +41,7 @@ const clubVariant: CarVariant = {
       smartCruiseControlWithStopAndGo: NOT_INCLUDED,
       blindSpotCollisionAvoidanceAssist: false,
       isofix: true,
+      frontIsofix: NOT_INCLUDED,
     },
     parkingAssistance: {
       reversingRadar: true,

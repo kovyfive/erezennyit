@@ -62,6 +62,7 @@ const ultimateEditionVariant: CarVariant = {
       smartCruiseControlWithStopAndGo: true,
       blindSpotCollisionAvoidanceAssist: 'ADA CSOMAG',
       isofix: true,
+      frontIsofix: NOT_INCLUDED,
     },
     parkingAssistance: {
       reversingRadar: true,

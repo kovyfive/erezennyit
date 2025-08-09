@@ -51,6 +51,7 @@ const jubileumVariant: CarVariant = {
       smartCruiseControlWithStopAndGo: NOT_INCLUDED,
       blindSpotCollisionAvoidanceAssist: false,
       isofix: true,
+      frontIsofix: true,
     },
     parkingAssistance: {
       reversingRadar: true,

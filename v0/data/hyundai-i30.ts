@@ -24,6 +24,7 @@ const trendVariant: Features = {
       smartCruiseControlWithStopAndGo: false,
       blindSpotCollisionAvoidanceAssist: false,
       isofix: true,
+      frontIsofix: NOT_INCLUDED,
     },
     parkingAssistance: {
       reversingRadar: true,
