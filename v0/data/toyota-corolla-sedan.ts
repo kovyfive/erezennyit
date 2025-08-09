@@ -76,6 +76,7 @@ const activeVariant: CarVariant = {
       heatedFrontSeats: false,
       heatedRearSeats: NOT_INCLUDED,
       dualZoneAC: true,
+      rainSensingWipers: false,
       headUpDisplay: false,
     },
     entertainment: {
@@ -140,6 +141,7 @@ const comfortVariant: CarVariant = {
       ...activeVariant.features.convenience,
       wirelessPhoneCharger: 'Tech',
       heatedFrontSeats: 'Style',
+      rainSensingWipers: true,
     },
     interiorExterior: {
       ...activeVariant.features.interiorExterior,

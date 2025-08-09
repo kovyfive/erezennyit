@@ -79,6 +79,7 @@ const activeVariant: CarVariant = {
       heatedFrontSeats: false,
       heatedRearSeats: NOT_INCLUDED,
       dualZoneAC: true,
+      rainSensingWipers: false,
       headUpDisplay: false,
     },
     entertainment: {
@@ -158,6 +159,7 @@ const comfortVariant: CarVariant = {
       powerTailgate: 'Style',
       powerTailgateWithFootSensor: 'Style',
       heatedFrontSeats: 'Tech',
+      rainSensingWipers: 'Tech',
     },
     interiorExterior: {
       ...activeVariant.features.interiorExterior,
@@ -232,6 +234,7 @@ const grSportVariant: CarVariant = {
       wirelessPhoneCharger: true,
       heatedFrontSeats: true,
       headUpDisplay: 'Dynamic JBL',
+      rainSensingWipers: true,
     },
     entertainment: {
       ...comfortVariant.features.entertainment,
@@ -310,6 +313,7 @@ const executiveJblVariant: CarVariant = {
       ...comfortVariant.features.convenience,
       headUpDisplay: true,
       wirelessPhoneCharger: true,
+      rainSensingWipers: true,
     },
     entertainment: {
       ...comfortVariant.features.entertainment,

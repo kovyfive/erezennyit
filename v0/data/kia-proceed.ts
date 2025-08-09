@@ -82,6 +82,7 @@ const ultimateEditionVariant: CarVariant = {
       heatedFrontSeats: true,
       heatedRearSeats: true,
       dualZoneAC: true,
+      rainSensingWipers: true,
       headUpDisplay: true,
     },
     entertainment: {

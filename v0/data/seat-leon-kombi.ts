@@ -18,6 +18,7 @@ const commonPackages = [
   { name: 'Connectivity box', price: 102870 },
   { name: 'Elektromos csomagtér-nyitás', price: 245110 },
   { name: 'Full link', price: 87630 },
+  { name: 'Praktikum', price: 66040 },
 
 ];
 
@@ -70,6 +71,7 @@ const jubileumVariant: CarVariant = {
       heatedFrontSeats: true,
       heatedRearSeats: NOT_INCLUDED,
       dualZoneAC: 'Komfort',
+      rainSensingWipers: 'Praktikum',
       headUpDisplay: NOT_INCLUDED,
     },
     entertainment: {

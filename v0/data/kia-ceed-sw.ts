@@ -78,6 +78,7 @@ const silverVariant: CarVariant = {
         heatedFrontSeats: true,
         heatedRearSeats: false,
         dualZoneAC: true,
+        rainSensingWipers: true,
         headUpDisplay: true,
       },
       entertainment: {

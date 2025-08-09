@@ -86,6 +86,7 @@ const comfortVariant: CarVariant = {
       heatedFrontSeats: true,
       heatedRearSeats: false,
       dualZoneAC: false,
+      rainSensingWipers: false,
       headUpDisplay: false,
     },
     entertainment: {
@@ -182,6 +183,7 @@ const midnightVariant: CarVariant = {
       ...comfortVariant.features.convenience,
       wirelessPhoneCharger: true,
       dualZoneAC: true,
+      rainSensingWipers: true,
     },
     interiorExterior: {
       ...comfortVariant.features.interiorExterior,

@@ -93,6 +93,7 @@ export interface ConvenienceFeatures {
   heatedFrontSeats: FeatureAvailability;
   heatedRearSeats: FeatureAvailability;
   dualZoneAC: FeatureAvailability;
+  rainSensingWipers: FeatureAvailability;
   headUpDisplay: FeatureAvailability;
 }
 

@@ -87,6 +87,7 @@ const essenceVariant: CarVariant = {
       heatedFrontSeats: true,
       heatedRearSeats: false,
       dualZoneAC: true,
+      rainSensingWipers: true,
       headUpDisplay: NOT_INCLUDED,
     },
     entertainment: {

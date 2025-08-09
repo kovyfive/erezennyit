@@ -267,6 +267,7 @@ export default function CarComparisonPage() {
     { category: "Convenience Features", key: "heatedFrontSeats", label: "Heated Front Seats", type: "feature" },
     { category: "Convenience Features", key: "heatedRearSeats", label: "Heated Rear Seats", type: "feature" },
     { category: "Convenience Features", key: "dualZoneAC", label: "Dual Zone A/C", type: "feature" },
+    { category: "Convenience Features", key: "rainSensingWipers", label: "Rain Sensing Wipers", type: "feature" },
     { category: "Convenience Features", key: "headUpDisplay", label: "Head-Up Display", type: "feature" },
 
     // Entertainment Features

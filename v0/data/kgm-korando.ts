@@ -61,6 +61,7 @@ const clubVariant: CarVariant = {
       heatedFrontSeats: 'Club Plus',
       heatedRearSeats: false,
       dualZoneAC: false,
+      rainSensingWipers: true,
       headUpDisplay: NOT_INCLUDED,
     },
     entertainment: {

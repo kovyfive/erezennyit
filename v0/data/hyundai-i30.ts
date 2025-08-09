@@ -44,6 +44,7 @@ const trendVariant: Features = {
       heatedFrontSeats: true,
       heatedRearSeats: false,
       dualZoneAC: false,
+      rainSensingWipers: false,
       headUpDisplay: NOT_INCLUDED,
     },
     entertainment: {
@@ -79,6 +80,7 @@ const primeVariant: Features = {
       ...trendVariant.convenience,
       wirelessPhoneCharger: "Wireless Phone Charger",
       dualZoneAC: true,
+      rainSensingWipers: true,
       rearPowerWindows: true,
       keylessStart: 'Prime Plus',
            
