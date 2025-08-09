@@ -1,29 +1,29 @@
 
-import { CarModel, EngineType, TransmissionType, DiscountTarget, CarVariant } from '../model/model';
+import { CarModel, EngineType, TransmissionType, DiscountTarget, CarVariant, MISSING, NOT_INCLUDED } from '../model/model';
 import { createCarModel } from '../model/model-helpers';
 import { createEngineVariant, createDefaultFeatures } from '../model/model-helpers';
 
 const colors = [
-    { name: 'Hófehér', price: 0 },
-    { name: 'Platina gyöngyfehér', price: 300000 },
-    { name: 'Nikkelszürke', price: 300000 },
-    { name: 'Szürke metál', price: 200000 },
-    { name: 'Éjfekete', price: 200000 },
-    { name: 'Szürkéskék metál', price: 200000 },
-    { name: 'Láva vörös', price: 300000 },
-    { name: 'Krómezüst', price: 300000 },
-    { name: 'Tealevél mély zöld', price: 300000 },
-    { name: 'Érzéki vörös', price: 300000 },
+  { name: 'Hófehér', price: 0 },
+  { name: 'Platina gyöngyfehér', price: 300000 },
+  { name: 'Nikkelszürke', price: 300000 },
+  { name: 'Szürke metál', price: 200000 },
+  { name: 'Éjfekete', price: 200000 },
+  { name: 'Szürkéskék metál', price: 200000 },
+  { name: 'Láva vörös', price: 300000 },
+  { name: 'Krómezüst', price: 300000 },
+  { name: 'Tealevél mély zöld', price: 300000 },
+  { name: 'Érzéki vörös', price: 300000 },
 ];
 
 const grSportColors = [
-    { name: 'GR-S gyöngyfehér', price: 0 },
-    { name: 'GR-S króm', price: 0 },
-    { name: 'GR-S hamuszürke', price: 0 },
-    { name: 'GR-S szürke metál', price: 0 },
-    { name: 'GR-S szürkéskék', price: 0 },
-    { name: 'GR-S érzéki vörös', price: 0 },
-    { name: 'GR-S lávavörös', price: 0 },
+  { name: 'GR-S gyöngyfehér', price: 0 },
+  { name: 'GR-S króm', price: 0 },
+  { name: 'GR-S hamuszürke', price: 0 },
+  { name: 'GR-S szürke metál', price: 0 },
+  { name: 'GR-S szürkéskék', price: 0 },
+  { name: 'GR-S érzéki vörös', price: 0 },
+  { name: 'GR-S lávavörös', price: 0 },
 ]
 
 const activeVariant: CarVariant = {
@@ -49,209 +49,204 @@ const activeVariant: CarVariant = {
     ),
   ],
   features: {
-    ...createDefaultFeatures(),
     safety: {
-        ...createDefaultFeatures().safety,
-        laneKeepAssist: true,
-        cruiseControl: true,
-        isofix: true,
+      laneKeepAssist: true,
+      cruiseControl: true,
+      smartCruiseControl: true,
+      smartCruiseControlWithStopAndGo: true,
+      blindSpotCollisionAvoidanceAssist: true,
+      isofix: true,
     },
     parkingAssistance: {
-        ...createDefaultFeatures().parkingAssistance,
+      reversingRadar: false,
+      frontParkingSensor: false,
+      rearParkingSensor: false,
+      parkingCameras: true,
+      parkingCameras360View: NOT_INCLUDED,
+      semiOrFullAutomaticParkingAssistant: NOT_INCLUDED,
+      electricParkingBrake: true,
     },
     convenience: {
-        ...createDefaultFeatures().convenience,
-        frontPowerWindows: true,
-        rearPowerWindows: true,
-        dualZoneAC: true,
+      keylessStart: true,
+      wirelessPhoneCharger: false,
+      powerTailgate: NOT_INCLUDED,
+      powerTailgateWithFootSensor: NOT_INCLUDED,
+      frontPowerWindows: true,
+      rearPowerWindows: true,
+      heatedFrontSeats: false,
+      heatedRearSeats: NOT_INCLUDED,
+      dualZoneAC: true,
+      headUpDisplay: false,
     },
     entertainment: {
-        ...createDefaultFeatures().entertainment,
-        wiredCarPlayAndroidAuto: true,
+      premiumSpeaker: NOT_INCLUDED,
+      wiredCarPlayAndroidAuto: true,
+      wirelessCarPlayAndroidAuto: true,
     },
+    interiorExterior: {
+      spareTire: true,
+      metalPedals: NOT_INCLUDED,
+      paddleShifters: NOT_INCLUDED,
+      velourFloorMats: NOT_INCLUDED,
+      rubberMats: 'Gumiszőnyeg',
+      tintedRearWindows: false,
+      roofRails: 'Tetőcsomagtartó',
+      slidingCenterConsole: NOT_INCLUDED,
+      leatherSeats: false,
+    }
   },
   customColorPrices: colors,
-  packages: [],
+  packages: [
+    { name: 'Gumiszőnyeg', price: 37100 },
+    { name: 'Tetőcsomagtartó', price: 172100 }
+  ],
   leatherSeatPackages: []
 };
 
 const comfortVariant: CarVariant = {
-    variantName: 'Comfort',
-    engineVariants: [
-      createEngineVariant(
-        '1.8 l Hybrid 140 e-CVT',
-        EngineType.FULL_HYBRID,
-        TransmissionType.HYBRID_AUTOMATIC,
-        13000000,
-        {
-          horsepower: 140,
-          engineDisplacement: 1798,
-          consumption: 4.5,
-          acceleration0to100: 9.1,
-          topSpeed: 180,
-          cargoVolumeSeatsUp: 471,
-          fuelTankCapacity: 43,
-          range: 956,
-          speakerCount: 6,
-        },
-        11000000
-      ),
-    ],
-    features: {
-      ...activeVariant.features,
-      entertainment: {
-          ...activeVariant.features.entertainment,
-          wirelessCarPlayAndroidAuto: true,
-      }
-    },
-    customColorPrices: colors,
-    packages: [],
-    leatherSeatPackages: []
-  };
-
-  const comfortTechVariant: CarVariant = {
-    variantName: 'Comfort Tech',
-    engineVariants: [
-      createEngineVariant(
-        '1.8 l Hybrid 140 e-CVT',
-        EngineType.FULL_HYBRID,
-        TransmissionType.HYBRID_AUTOMATIC,
-        13590000,
-        {
-          horsepower: 140,
-          engineDisplacement: 1798,
-          consumption: 4.5,
-          acceleration0to100: 9.1,
-          topSpeed: 180,
-          cargoVolumeSeatsUp: 471,
-          fuelTankCapacity: 43,
-          range: 956,
-          speakerCount: 6,
-        },
-        11590000
-      ),
-    ],
-    features: {
-      ...comfortVariant.features,
-      parkingAssistance: {
-          ...comfortVariant.features.parkingAssistance,
-          frontParkingSensor: true,
-          rearParkingSensor: true,
+  variantName: 'Comfort',
+  engineVariants: [
+    createEngineVariant(
+      '1.8 l Hybrid 140 e-CVT',
+      EngineType.FULL_HYBRID,
+      TransmissionType.HYBRID_AUTOMATIC,
+      13000000,
+      {
+        horsepower: 140,
+        engineDisplacement: 1798,
+        consumption: 4.5,
+        acceleration0to100: 9.1,
+        topSpeed: 180,
+        cargoVolumeSeatsUp: 471,
+        fuelTankCapacity: 43,
+        range: 956,
+        speakerCount: 6,
       },
-      convenience: {
-            ...comfortVariant.features.convenience,
-            keylessStart: true,
-            heatedFrontSeats: true,
-            wirelessPhoneCharger: true,
-      }
+      11000000
+    ),
+  ],
+  features: {
+    ...activeVariant.features,
+    parkingAssistance: {
+      ...activeVariant.features.parkingAssistance,
+      frontParkingSensor: 'Tech',
+      rearParkingSensor: 'Tech',
     },
-    customColorPrices: colors,
-    packages: [],
-    leatherSeatPackages: []
-  };
-
-  const styleVariant: CarVariant = {
-    variantName: 'Style',
-    engineVariants: [
-      createEngineVariant(
-        '1.8 l Hybrid 140 e-CVT',
-        EngineType.FULL_HYBRID,
-        TransmissionType.HYBRID_AUTOMATIC,
-        14625000,
-        {
-          horsepower: 140,
-          engineDisplacement: 1798,
-          consumption: 4.5,
-          acceleration0to100: 9.1,
-          topSpeed: 180,
-          cargoVolumeSeatsUp: 471,
-          fuelTankCapacity: 43,
-          range: 956,
-          speakerCount: 6,
-        },
-        12625000
-      ),
-    ],
-    features: {
-      ...comfortTechVariant.features,
-      interiorExterior: {
-          ...comfortTechVariant.features.interiorExterior,
-          tintedRearWindows: true,
-      }
+    convenience: {
+      ...activeVariant.features.convenience,
+      wirelessPhoneCharger: 'Tech',
+      heatedFrontSeats: 'Style',
     },
-    customColorPrices: colors,
-    packages: [],
-    leatherSeatPackages: []
-  };
+    interiorExterior: {
+      ...activeVariant.features.interiorExterior,
+      tintedRearWindows: 'Style',
+    }
+  },
+  customColorPrices: colors,
+  packages: [
+    { name: 'Tech', price: 590000 },
+    { name: 'Style', price: 445000 },
+    { name: 'Gumiszőnyeg', price: 37100 },
+    { name: 'Tetőcsomagtartó', price: 172100 }
+  ],
+  leatherSeatPackages: []
+};
 
-  const grSportVariant: CarVariant = {
-    variantName: 'GR Sport',
-    engineVariants: [
-      createEngineVariant(
-        '1.8 l Hybrid 140 e-CVT',
-        EngineType.FULL_HYBRID,
-        TransmissionType.HYBRID_AUTOMATIC,
-        15605000,
-        {
-          horsepower: 140,
-          engineDisplacement: 1798,
-          consumption: 4.5,
-          acceleration0to100: 9.1,
-          topSpeed: 180,
-          cargoVolumeSeatsUp: 471,
-          fuelTankCapacity: 43,
-          range: 956,
-          speakerCount: 6,
-        },
-        13605000
-      ),
-    ],
-    features: {
-      ...styleVariant.features,
-    },
-    customColorPrices: grSportColors,
-    packages: [],
-    leatherSeatPackages: []
-  };
-
-  const executiveVariant: CarVariant = {
-    variantName: 'Executive',
-    engineVariants: [
-      createEngineVariant(
-        '1.8 l Hybrid 140 e-CVT',
-        EngineType.FULL_HYBRID,
-        TransmissionType.HYBRID_AUTOMATIC,
-        15240000,
-        {
-          horsepower: 140,
-          engineDisplacement: 1798,
-          consumption: 4.5,
-          acceleration0to100: 9.1,
-          topSpeed: 180,
-          cargoVolumeSeatsUp: 471,
-          fuelTankCapacity: 43,
-          range: 956,
-          speakerCount: 6,
-        },
-        13240000
-      ),
-    ],
-    features: {
-      ...styleVariant.features,
-      safety: {
-          ...styleVariant.features.safety,
-          blindSpotCollisionAvoidanceAssist: true,
+const grSportVariant: CarVariant = {
+  variantName: 'GR Sport',
+  engineVariants: [
+    createEngineVariant(
+      '1.8 l Hybrid 140 e-CVT',
+      EngineType.FULL_HYBRID,
+      TransmissionType.HYBRID_AUTOMATIC,
+      15605000,
+      {
+        horsepower: 140,
+        engineDisplacement: 1798,
+        consumption: 4.5,
+        acceleration0to100: 9.1,
+        topSpeed: 180,
+        cargoVolumeSeatsUp: 471,
+        fuelTankCapacity: 43,
+        range: 956,
+        speakerCount: 6,
       },
-      convenience: {
-          ...styleVariant.features.convenience,
-          heatedRearSeats: true,
-          headUpDisplay: true,
-      }
+      13605000
+    ),
+  ],
+  features: {
+    ...comfortVariant.features,
+    safety: {
+      ...comfortVariant.features.safety,
     },
-    customColorPrices: colors,
-    packages: [],
-    leatherSeatPackages: []
-  };
+    parkingAssistance: {
+      ...comfortVariant.features.parkingAssistance,
+      reversingRadar: true,
+      frontParkingSensor: true,
+      rearParkingSensor: true,
+    },
+    convenience: {
+      ...comfortVariant.features.convenience,
+      wirelessPhoneCharger: true,
+      heatedFrontSeats: true,
+      headUpDisplay: true,
+    },
+    interiorExterior: {
+      ...comfortVariant.features.interiorExterior,
+      spareTire: false,
+      tintedRearWindows: true,
+      leatherSeats: true,
+    }
+  },
+  customColorPrices: grSportColors,
+  packages: [{ name: 'Gumiszőnyeg', price: 37100 }, { name: 'Tetőcsomagtartó', price: 172100 }],
+  leatherSeatPackages: []
+};
+
+const executiveVariant: CarVariant = {
+  variantName: 'Executive',
+  engineVariants: [
+    createEngineVariant(
+      '1.8 l Hybrid 140 e-CVT',
+      EngineType.FULL_HYBRID,
+      TransmissionType.HYBRID_AUTOMATIC,
+      15240000,
+      {
+        horsepower: 140,
+        engineDisplacement: 1798,
+        consumption: 4.5,
+        acceleration0to100: 9.1,
+        topSpeed: 180,
+        cargoVolumeSeatsUp: 471,
+        fuelTankCapacity: 43,
+        range: 956,
+        speakerCount: 6,
+      },
+      13240000
+    ),
+  ],
+  features: {
+    ...comfortVariant.features,
+    safety: {
+      ...comfortVariant.features.safety,
+    },
+    convenience: {
+      ...comfortVariant.features.convenience,
+      wirelessPhoneCharger: true,
+      heatedFrontSeats: true,
+      headUpDisplay: true,
+    },
+    interiorExterior: {
+      ...comfortVariant.features.interiorExterior,
+      spareTire: false,
+      tintedRearWindows: true,
+      leatherSeats: true,
+    }
+  },
+  customColorPrices: colors,
+  packages: [{ name: 'Gumiszőnyeg', price: 37100 }, { name: 'Tetőcsomagtartó', price: 172100 }],
+  leatherSeatPackages: []
+};
 
 
 const modelName = createCarModel(
@@ -261,8 +256,6 @@ const modelName = createCarModel(
   [
     activeVariant,
     comfortVariant,
-    comfortTechVariant,
-    styleVariant,
     grSportVariant,
     executiveVariant
   ]
