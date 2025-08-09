@@ -1,5 +1,12 @@
 # Car Model Information Extraction Guide
 
+## Important Update: Model Structure Change
+> **Note**: The car model structure has been split into two files:
+> - `model.ts` - Contains only type definitions and interfaces
+> - `model-helpers.ts` - Contains helper functions and implementation
+> 
+> When creating car model files, please use the updated import syntax and the `createCarModel()` factory function instead of direct constructor usage. See examples in this guide.
+
 ## Overview
 You will be parsing PDF flyers from car manufacturers to extract structured information about car models. The information will be used to populate a TypeScript data structure. Follow these instructions carefully to ensure accurate data extraction.
 
@@ -133,6 +140,10 @@ Group features into these categories:
    - Then override only the specific features that differ from the default.
    - This ensures no features are missed and keeps the code clean.
 
+7. **Using `createCarModel()`**:
+   - Always use the `createCarModel()` factory function instead of the direct constructor.
+   - This ensures proper implementation and compatibility with the application's architecture.
+   - The function handles the creation of a CarModel instance with all the appropriate defaults.
 
 ## Output Format & Code Structure
 
@@ -148,10 +159,13 @@ import {
   EngineType,
   TransmissionType,
   DiscountTarget,
-  createEngineVariant,
-  createDefaultFeatures,
   CarVariant
 } from '../model/model';
+import {
+  createEngineVariant,
+  createDefaultFeatures,
+  createCarModel
+} from '../model/model-helpers';
 
 // Define packages available for this model
 const commonPackages = [
@@ -242,7 +256,7 @@ Finally, create and export the car model:
 
 ```typescript
 // Create and export the complete car model
-const modelName = new CarModel(
+const modelName = createCarModel(
   'Manufacturer',          // e.g., "Kia"
   'Model Name',            // e.g., "Ceed SW"
   DiscountTarget.BOTH,     // or PRIVATE, BUSINESS, NONE
@@ -315,3 +329,22 @@ safety: {
 This pattern shows logical feature progression from lower to higher trim levels, which typically follows car manufacturers' feature packaging strategy.
 
 Remember to focus on the differences between variants - a higher trim usually builds upon the features of lower trims, either by including package features as standard or by adding more premium features.
+
+## Project Structure
+
+The car model structure has been organized as follows:
+
+1. **Type Definitions** (`model.ts`):
+   - Contains all TypeScript interfaces and types
+   - Includes enums for common values (EngineType, TransmissionType, etc.)
+   - Defines the CarModel interface and all related types
+
+2. **Helper Functions** (`model-helpers.ts`):
+   - Contains the implementation of the CarModel interface
+   - Provides factory functions for creating common structures:
+     - `createCarModel()`: Creates a new CarModel instance
+     - `createEngineVariant()`: Creates a new engine variant with proper defaults
+     - `createDefaultFeatures()`: Creates a default features structure with all values set to `false`
+     - `camelToProperty()`: Utility for converting camelCase to property names
+
+Using these helper functions makes your code more concise and ensures consistency across different car model definitions.
