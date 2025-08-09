@@ -182,6 +182,23 @@ export default function CarComparisonPage() {
       })
     }
 
+    // Sort by calculated price
+    filtered.sort((a, b) => {
+      const priceA =
+        a.calculatedPrice !== undefined && a.calculatedPrice !== Number.MAX_VALUE
+          ? a.calculatedPrice
+          : a.basePrice
+      const priceB =
+        b.calculatedPrice !== undefined && b.calculatedPrice !== Number.MAX_VALUE
+          ? b.calculatedPrice
+          : b.basePrice
+
+      if (a.calculatedPrice === Number.MAX_VALUE) return 1
+      if (b.calculatedPrice === Number.MAX_VALUE) return -1
+
+      return priceA - priceB
+    })
+
     return filtered
   }, [carCombinations, hideNonSatisfying, highlightedRows, numericRanges])
 
