@@ -41,6 +41,8 @@ const trendVariant: Features = {
       powerTailgateWithFootSensor: NOT_INCLUDED,
       frontPowerWindows: true,
       rearPowerWindows: "Kényelmi",
+      powerFoldingMirrors: 'Kényelmi',
+      heatedSideMirrors: true,
       heatedFrontSeats: true,
       heatedRearSeats: false,
       dualZoneAC: false,
@@ -83,7 +85,7 @@ const primeVariant: Features = {
       rainSensingWipers: true,
       rearPowerWindows: true,
       keylessStart: 'Prime Plus',
-           
+      powerFoldingMirrors: true,
     },
     interiorExterior: {
       ...trendVariant.interiorExterior,

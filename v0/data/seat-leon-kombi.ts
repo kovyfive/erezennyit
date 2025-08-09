@@ -68,6 +68,8 @@ const jubileumVariant: CarVariant = {
       powerTailgateWithFootSensor: 'Elektromos csomagtér-nyitás',
       frontPowerWindows: true,
       rearPowerWindows: true,
+      powerFoldingMirrors: 'Tükrök',
+      heatedSideMirrors: 'Tükrök',
       heatedFrontSeats: true,
       heatedRearSeats: NOT_INCLUDED,
       dualZoneAC: 'Komfort',
@@ -96,6 +98,7 @@ const jubileumVariant: CarVariant = {
     ...commonPackages,
     { name: 'Komfort', price: 180340 },
     { name: 'Sötét üveg', price: 129540 },
+    { name: 'Tükrök', price: 59690 },
 
   ],
   leatherSeatPackages: []
@@ -191,6 +194,7 @@ const styleVariant: CarVariant = {
     { name: 'Téli', price: 196850 },
     { name: 'Komfort', price: 180340 },
     { name: 'Sötét üveg', price: 129540 },
+    { name: 'Tükrök', price: 59690 },
 
   ],
   leatherSeatPackages: []
@@ -278,6 +282,8 @@ const frVariant: CarVariant = {
     convenience: {
       ...styleVariant.features.convenience,
       dualZoneAC: 'FR',
+      powerFoldingMirrors: 'FR',
+      heatedSideMirrors: true,
     },
     entertainment: {
       ...styleVariant.features.entertainment,

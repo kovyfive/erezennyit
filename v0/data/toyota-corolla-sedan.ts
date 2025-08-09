@@ -73,6 +73,8 @@ const activeVariant: CarVariant = {
       powerTailgateWithFootSensor: NOT_INCLUDED,
       frontPowerWindows: true,
       rearPowerWindows: true,
+      powerFoldingMirrors: false,
+      heatedSideMirrors: true,
       heatedFrontSeats: false,
       heatedRearSeats: NOT_INCLUDED,
       dualZoneAC: true,
@@ -142,6 +144,7 @@ const comfortVariant: CarVariant = {
       wirelessPhoneCharger: 'Tech',
       heatedFrontSeats: 'Style',
       rainSensingWipers: true,
+      powerFoldingMirrors: true,
     },
     interiorExterior: {
       ...activeVariant.features.interiorExterior,

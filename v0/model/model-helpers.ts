@@ -75,6 +75,7 @@ export function createDefaultFeatures(): Features {
       heatedFrontSeats: MISSING,
       heatedRearSeats: MISSING,
       dualZoneAC: MISSING,
+      rainSensingWipers: MISSING,
       headUpDisplay: MISSING,
     },
     entertainment: {

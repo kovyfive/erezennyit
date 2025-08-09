@@ -84,6 +84,8 @@ const essenceVariant: CarVariant = {
       powerTailgateWithFootSensor: NOT_INCLUDED,
       frontPowerWindows: true,
       rearPowerWindows: true,
+      powerFoldingMirrors: true,
+      heatedSideMirrors: true,
       heatedFrontSeats: true,
       heatedRearSeats: false,
       dualZoneAC: true,

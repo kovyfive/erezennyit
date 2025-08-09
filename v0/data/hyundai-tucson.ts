@@ -83,6 +83,8 @@ const comfortVariant: CarVariant = {
       powerTailgateWithFootSensor: false,
       frontPowerWindows: true,
       rearPowerWindows: true,
+      powerFoldingMirrors: true,
+      heatedSideMirrors: true,
       heatedFrontSeats: true,
       heatedRearSeats: false,
       dualZoneAC: false,

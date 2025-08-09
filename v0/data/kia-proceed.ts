@@ -79,6 +79,8 @@ const ultimateEditionVariant: CarVariant = {
       powerTailgateWithFootSensor: false,
       frontPowerWindows: true,
       rearPowerWindows: true,
+      powerFoldingMirrors: true,
+      heatedSideMirrors: true,
       heatedFrontSeats: true,
       heatedRearSeats: true,
       dualZoneAC: true,

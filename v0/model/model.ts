@@ -90,6 +90,8 @@ export interface ConvenienceFeatures {
   powerTailgateWithFootSensor: FeatureAvailability;
   frontPowerWindows: FeatureAvailability;
   rearPowerWindows: FeatureAvailability;
+  powerFoldingMirrors: FeatureAvailability;
+  heatedSideMirrors: FeatureAvailability;
   heatedFrontSeats: FeatureAvailability;
   heatedRearSeats: FeatureAvailability;
   dualZoneAC: FeatureAvailability;

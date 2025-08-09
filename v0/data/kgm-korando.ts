@@ -58,6 +58,8 @@ const clubVariant: CarVariant = {
       powerTailgateWithFootSensor: false,
       frontPowerWindows: true,
       rearPowerWindows: true,
+      powerFoldingMirrors: true,
+      heatedSideMirrors: true,
       heatedFrontSeats: 'Club Plus',
       heatedRearSeats: false,
       dualZoneAC: false,

@@ -76,6 +76,8 @@ const activeVariant: CarVariant = {
       powerTailgateWithFootSensor: false,
       frontPowerWindows: true,
       rearPowerWindows: true,
+      powerFoldingMirrors: false,
+      heatedSideMirrors: true,
       heatedFrontSeats: false,
       heatedRearSeats: NOT_INCLUDED,
       dualZoneAC: true,
