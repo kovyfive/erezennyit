@@ -72,6 +72,8 @@ export function createDefaultFeatures(): Features {
       powerTailgateWithFootSensor: MISSING,
       frontPowerWindows: MISSING,
       rearPowerWindows: MISSING,
+      powerFoldingMirrors: MISSING,
+      heatedSideMirrors: MISSING,
       heatedFrontSeats: MISSING,
       heatedRearSeats: MISSING,
       dualZoneAC: MISSING,
