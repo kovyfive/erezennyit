@@ -19,6 +19,7 @@ const CAR_MODEL_FILES = [
   'toyota-corolla-touring-sports', // ✅
   'hyundai-kona', // ✅
   'toyota-c-hr', // ✅
+  'vw-karoq', // ✅
 ];
 
 /**
