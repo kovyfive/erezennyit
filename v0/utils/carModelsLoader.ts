@@ -6,13 +6,14 @@ const CAR_MODEL_FILES = [
   'kia-ceed-sw', // ✅
   'kia-proceed', // ✅
   'hyundai-i30', // ✅
-  'kgm-korando',
+  'hyundai-tucson', // ✅
+  'kgm-korando', // ✅
   'kia-sportage', // ✅
-  'mazda-3',
-  'opel-astra-sports-tourer',
-  'opel-grandland',
-  'peugeot-308',
-  'renault-arkana',
+  // 'mazda-3',
+  // 'opel-astra-sports-tourer',
+  // 'opel-grandland',
+  // 'peugeot-308',
+  // 'renault-arkana',
   'seat-leon-kombi',
   'toyota-corolla-sedan',
   'toyota-corolla-touring-sports'

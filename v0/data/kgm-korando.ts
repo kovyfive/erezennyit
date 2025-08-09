@@ -31,7 +31,6 @@ const clubVariant: CarVariant = {
         speakerCount: 6,
       },
       8599000
-
     ),
   ],
   features: {
@@ -105,8 +104,7 @@ const smartVariant: CarVariant = {
         range: 660,
         speakerCount: 6,
       },
-      9499000,
-      699000
+      9499000
     ),
   ],
   features: {
