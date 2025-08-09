@@ -156,6 +156,7 @@ const goldVariant: CarVariant = {
     convenience: {
       ...silverVariant.features.convenience,
       heatedSideMirrors: true,
+      powerFoldingMirrors: true
     },
     parkingAssistance: {
       ...silverVariant.features.parkingAssistance,

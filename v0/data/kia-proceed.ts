@@ -102,7 +102,7 @@ const ultimateEditionVariant: CarVariant = {
       tintedRearWindows: true,
       roofRails: NOT_INCLUDED,
       slidingCenterConsole: true,
-      leatherSeats: "Bőr és Suede üléskárpit"
+      leatherSeats: true
     }
   },
   customColorPrices: colors,
