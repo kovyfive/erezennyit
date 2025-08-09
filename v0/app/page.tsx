@@ -89,6 +89,7 @@ export default function CarComparisonPage() {
       ranges["cargoVolumeSeatsUp"].current = [450, ranges["cargoVolumeSeatsUp"].max]
       ranges["engineDisplacement"].current = [1250, ranges["engineDisplacement"].max]
       ranges["topSpeed"].current = [175, ranges["topSpeed"].max]
+      ranges["horsepower"].current = [120, ranges["horsepower"].max]
 
       setNumericRanges(ranges)
       setLoading(false)
@@ -251,6 +252,7 @@ export default function CarComparisonPage() {
       type: "feature",
     },
     { category: "Safety Features", key: "isofix", label: "ISOFIX", type: "feature" },
+    { category: "Safety Features", key: "frontIsofix", label: "Front ISOFIX", type: "feature" },
 
     // Parking Assistance
     { category: "Parking Assistance", key: "reversingRadar", label: "Reversing Radar", type: "feature" },
@@ -278,6 +280,8 @@ export default function CarComparisonPage() {
     },
     { category: "Convenience Features", key: "frontPowerWindows", label: "Front Power Windows", type: "feature" },
     { category: "Convenience Features", key: "rearPowerWindows", label: "Rear Power Windows", type: "feature" },
+    { category: "Convenience Features", key: "powerFoldingMirrors", label: "Power Folding Mirrors", type: "feature" },
+    { category: "Convenience Features", key: "heatedSideMirrors", label: "Heated Side Mirrors", type: "feature" },
     { category: "Convenience Features", key: "heatedFrontSeats", label: "Heated Front Seats", type: "feature" },
     { category: "Convenience Features", key: "heatedRearSeats", label: "Heated Rear Seats", type: "feature" },
     { category: "Convenience Features", key: "dualZoneAC", label: "Dual Zone A/C", type: "feature" },

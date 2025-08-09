@@ -58,8 +58,8 @@ const ultimateEditionVariant: CarVariant = {
     safety: {
       laneKeepAssist: true,
       cruiseControl: true,
-      smartCruiseControl: true,
-      smartCruiseControlWithStopAndGo: true,
+      smartCruiseControl: 'AUTOMATIC',
+      smartCruiseControlWithStopAndGo: 'AUTOMATIC',
       blindSpotCollisionAvoidanceAssist: 'ADA CSOMAG',
       isofix: true,
       frontIsofix: NOT_INCLUDED,

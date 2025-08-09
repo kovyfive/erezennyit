@@ -6,6 +6,7 @@ import {
   CarVariant,
   MISSING,
   NOT_INCLUDED,
+  NOT_AVAILABLE,
 } from '../model/model';
 import {
   createEngineVariant,
@@ -43,6 +44,13 @@ const joyVariant: CarVariant = {
       {
         horsepower: 150,
         speakerCount: 8,
+        engineDisplacement: 1498,
+        consumption: 5.4,
+        acceleration0to100: 8.9,
+        topSpeed: 204,
+        fuelTankCapacity: 50,
+        cargoVolumeSeatsUp: 521,
+        range: 926,
       }
     ),
     createEngineVariant(
@@ -53,6 +61,13 @@ const joyVariant: CarVariant = {
       {
         horsepower: 150,
         speakerCount: 8,
+        engineDisplacement: 1498,
+        consumption: 5.4,
+        acceleration0to100: 8.9,
+        topSpeed: 204,
+        fuelTankCapacity: 50,
+        cargoVolumeSeatsUp: 521,
+        range: 926,
       }
     ),
   ],
@@ -125,6 +140,13 @@ const selectionVariant: CarVariant = {
       {
         horsepower: 115,
         speakerCount: 8,
+        engineDisplacement: 999,
+        consumption: 5.2,
+        acceleration0to100: 10.6,
+        topSpeed: 187,
+        fuelTankCapacity: 50,
+        cargoVolumeSeatsUp: 521,
+        range: 961,
       }
     ),
     createEngineVariant(
@@ -135,6 +157,13 @@ const selectionVariant: CarVariant = {
       {
         horsepower: 150,
         speakerCount: 8,
+        engineDisplacement: 1498,
+        consumption: 5.4,
+        acceleration0to100: 8.9,
+        topSpeed: 204,
+        fuelTankCapacity: 50,
+        cargoVolumeSeatsUp: 521,
+        range: 926,
       }
     ),
     createEngineVariant(
@@ -145,6 +174,13 @@ const selectionVariant: CarVariant = {
       {
         horsepower: 150,
         speakerCount: 8,
+        engineDisplacement: 1498,
+        consumption: 5.4,
+        acceleration0to100: 8.9,
+        topSpeed: 204,
+        fuelTankCapacity: 50,
+        cargoVolumeSeatsUp: 521,
+        range: 926,
       }
     ),
   ],
