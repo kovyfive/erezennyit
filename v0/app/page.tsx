@@ -35,7 +35,7 @@ export default function CarComparisonPage() {
   const [carData, setCarData] = useState<CarModel[]>([])
   const [loading, setLoading] = useState(true)
   const [highlightedRows, setHighlightedRows] = useState<Set<string>>(new Set())
-  const [hideNonSatisfying, setHideNonSatisfying] = useState(false)
+  const [hideNonSatisfying, setHideNonSatisfying] = useState(true)
   const [numericRanges, setNumericRanges] = useState<NumericRanges>({})
 
   // Load mock data
@@ -141,26 +141,7 @@ export default function CarComparisonPage() {
   // Filter combinations based on highlighted features and numeric ranges
   const filteredCombinations = useMemo(() => {
     let filtered = carCombinations.filter((combo) => {
-      // Check highlighted features first
-      if (highlightedRows.size > 0) {
-        const allFeatures = {
-          ...combo.variant.features.safety,
-          ...combo.variant.features.parkingAssistance,
-          ...combo.variant.features.convenience,
-          ...combo.variant.features.entertainment,
-          ...combo.variant.features.interiorExterior,
-        }
-
-        for (const feature of highlightedRows) {
-          const featureValue = (allFeatures as any)[feature]
-          // If feature is false, this car doesn't satisfy the requirement
-          if (featureValue === false) {
-            return false
-          }
-        }
-      }
-
-      // Check numeric ranges
+            // Check numeric ranges
       for (const [field, range] of Object.entries(numericRanges)) {
         const value = (combo.engine.technicalSpecs as any)[field]
         if (typeof value === "number") {
@@ -177,21 +158,35 @@ export default function CarComparisonPage() {
     // further filter out cars that don't satisfy the requirements
     if (hideNonSatisfying && highlightedRows.size > 0) {
       filtered = filtered.filter((combo) => {
-        // If calculated price is MAX_VALUE, it means the car doesn't satisfy requirements
-        return combo.calculatedPrice !== Number.MAX_VALUE
+        const allFeatures = {
+          ...combo.variant.features.safety,
+          ...combo.variant.features.parkingAssistance,
+          ...combo.variant.features.convenience,
+          ...combo.variant.features.entertainment,
+          ...combo.variant.features.interiorExterior,
+        }
+
+        for (const feature of highlightedRows) {
+          const featureValue = (allFeatures as any)[feature]
+          if (
+            featureValue === false ||
+            featureValue === NOT_INCLUDED ||
+            featureValue === NOT_AVAILABLE ||
+            featureValue === MISSING
+          ) {
+            return false
+          }
+        }
+        return true
       })
     }
 
     // Sort by calculated price
     filtered.sort((a, b) => {
       const priceA =
-        a.calculatedPrice !== undefined && a.calculatedPrice !== Number.MAX_VALUE
-          ? a.calculatedPrice
-          : a.basePrice
+        a.calculatedPrice !== undefined && a.calculatedPrice !== Number.MAX_VALUE ? a.calculatedPrice : a.basePrice
       const priceB =
-        b.calculatedPrice !== undefined && b.calculatedPrice !== Number.MAX_VALUE
-          ? b.calculatedPrice
-          : b.basePrice
+        b.calculatedPrice !== undefined && b.calculatedPrice !== Number.MAX_VALUE ? b.calculatedPrice : b.basePrice
 
       if (a.calculatedPrice === Number.MAX_VALUE) return 1
       if (b.calculatedPrice === Number.MAX_VALUE) return -1
@@ -357,7 +352,7 @@ export default function CarComparisonPage() {
     if (!isHighlighted) return ""
 
     if (value === true) return "bg-green-100 text-green-800"
-    if (value === false) return "bg-red-100 text-red-800"
+    if (value === false || value === NOT_INCLUDED) return "bg-red-100 text-red-800"
     if (typeof value === "string" && value !== NOT_AVAILABLE) return "bg-blue-100 text-blue-800"
     if (value === NOT_AVAILABLE) return "bg-gray-100 text-gray-600"
     return "bg-gray-50"
@@ -437,7 +432,12 @@ export default function CarComparisonPage() {
                 <thead className="bg-gray-100 sticky top-0 z-10">
                   <tr>
                     <th className="sticky left-0 bg-gray-100 p-3 text-left font-semibold text-gray-900 border-r border-gray-300 min-w-[200px]">
-                      Parameter
+                      <p>
+                        Parameter 
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        Click to add filter
+                      </p>
                     </th>
                     {filteredCombinations.map((combo, index) => (
                       <th
