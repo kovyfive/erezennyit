@@ -36,6 +36,7 @@ export default function CarComparisonPage() {
   const [loading, setLoading] = useState(true)
   const [highlightedRows, setHighlightedRows] = useState<Set<string>>(new Set())
   const [hideNonSatisfying, setHideNonSatisfying] = useState(true)
+  const [considerDiscounts, setConsiderDiscounts] = useState(true)
   const [numericRanges, setNumericRanges] = useState<NumericRanges>({})
 
   // Load mock data
@@ -187,25 +188,25 @@ export default function CarComparisonPage() {
       let priceA, priceB
 
       // Calculate price for a
-      if (a.calculatedPrice !== undefined && a.calculatedPrice !== Number.MAX_VALUE) {
-        if (a.engine.discountedPrice) {
+      if (a.calculatedPrice !== undefined && a.calculatedPrice !== Number.MAX_VALUE && a.requiredPackages.length > 0) {
+        if (considerDiscounts && a.engine.discountedPrice) {
           priceA = a.engine.discountedPrice + (a.calculatedPrice - a.basePrice)
         } else {
           priceA = a.calculatedPrice
         }
       } else {
-        priceA = a.engine.discountedPrice ? a.engine.discountedPrice : a.basePrice
+        priceA = considerDiscounts && a.engine.discountedPrice ? a.engine.discountedPrice : a.basePrice
       }
 
       // Calculate price for b
-      if (b.calculatedPrice !== undefined && b.calculatedPrice !== Number.MAX_VALUE) {
-        if (b.engine.discountedPrice) {
+      if (b.calculatedPrice !== undefined && b.calculatedPrice !== Number.MAX_VALUE && b.requiredPackages.length > 0) {
+        if (considerDiscounts && b.engine.discountedPrice) {
           priceB = b.engine.discountedPrice + (b.calculatedPrice - b.basePrice)
         } else {
           priceB = b.calculatedPrice
         }
       } else {
-        priceB = b.engine.discountedPrice ? b.engine.discountedPrice : b.basePrice
+        priceB = considerDiscounts && b.engine.discountedPrice ? b.engine.discountedPrice : b.basePrice
       }
 
       if (a.calculatedPrice === Number.MAX_VALUE) return 1
@@ -215,7 +216,7 @@ export default function CarComparisonPage() {
     })
 
     return filtered
-  }, [carCombinations, hideNonSatisfying, highlightedRows, numericRanges])
+  }, [carCombinations, hideNonSatisfying, highlightedRows, numericRanges, considerDiscounts])
 
   // Define all parameter rows
   const parameterRows = [
@@ -328,6 +329,7 @@ export default function CarComparisonPage() {
   const resetFilters = () => {
     setHighlightedRows(new Set())
     setHideNonSatisfying(false)
+    setConsiderDiscounts(true)
     const resetRanges = { ...numericRanges }
     Object.keys(resetRanges).forEach((key) => {
       resetRanges[key].current = [resetRanges[key].min, resetRanges[key].max]
@@ -400,61 +402,15 @@ export default function CarComparisonPage() {
           <p className="text-gray-600">Compare features, specifications, and pricing across different car models</p>
         </div>
 
-        {/* Filter Controls */}
-        <Card className="mb-6 p-4">
-          <div className="flex flex-wrap items-center gap-4">
-            <Button onClick={resetFilters} variant="outline" className="flex items-center gap-2 bg-transparent">
-              <RotateCcw className="h-4 w-4" />
-              Reset Filters
-            </Button>
-
-            <div className="flex items-center space-x-2">
-              <Checkbox 
-                id="hide-non-satisfying" 
-                checked={hideNonSatisfying} 
-                onCheckedChange={(checked) => setHideNonSatisfying(checked === true)} 
-              />
-              <label htmlFor="hide-non-satisfying" className="text-sm font-medium">
-                Hide non-satisfying variants
-              </label>
-            </div>
-
-            {/* Numeric Range Sliders */}
-            <div className="flex flex-wrap gap-4">
-              {Object.entries(numericRanges).map(([key, range]) => (
-                <div key={key} className="min-w-[200px]">
-                  <label className="text-xs font-medium text-gray-700 mb-1 block">
-                    {parameterRows.find((row) => row.key === key)?.label || key}
-                  </label>
-                  <div className="px-2">
-                    <Slider
-                      value={range.current}
-                      onValueChange={(value) => updateNumericRange(key, value as [number, number])}
-                      min={range.min}
-                      max={range.max}
-                      step={(range.max - range.min) / 100}
-                      className="w-full"
-                    />
-                    <div className="flex justify-between text-xs text-gray-500 mt-1">
-                      <span>{range.current[0].toFixed(1)}</span>
-                      <span>{range.current[1].toFixed(1)}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Card>
-
         {/* Comparison Table */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-4">
           {filteredCombinations.length > 0 ? (
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto max-h-[80vh] overflow-y-auto">
               <table className="w-full">
                 {/* Headers */}
-                <thead className="bg-gray-100 sticky top-0 z-10">
+                <thead className="bg-gray-100 sticky top-0 z-20">
                   <tr>
-                    <th className="sticky left-0 bg-gray-100 p-3 text-left font-semibold text-gray-900 border-r border-gray-300 min-w-[200px]">
+                    <th className="sticky left-0 bg-gray-100 p-3 text-left font-semibold text-gray-900 border-r border-gray-300 min-w-[200px] z-30">
                       <p>
                         Parameter 
                       </p>
@@ -473,7 +429,7 @@ export default function CarComparisonPage() {
                           <div className="text-xs text-gray-600">{combo.variant.variantName}</div>
                           <div className="text-xs text-gray-500">{combo.engine.listedEngineName}</div>
                           <div className="text-xs">
-                            {combo.engine.discountedPrice ? (
+                            {considerDiscounts && combo.engine.discountedPrice ? (
                               <>
                                 <span className="line-through text-gray-500">
                                   {combo.basePrice.toLocaleString()} Ft
@@ -487,13 +443,15 @@ export default function CarComparisonPage() {
                               <span className="font-medium">{combo.basePrice.toLocaleString()} Ft</span>
                             )}
                           </div>
-                          {combo.calculatedPrice && combo.calculatedPrice !== Number.MAX_VALUE && (
+                          { combo.requiredPackages.length > 0 && combo.calculatedPrice && combo.calculatedPrice !== Number.MAX_VALUE && (
                             <div>
-                              <div className="text-xs text-gray-500 mt-1">
-                                +{combo.requiredPackages.length} package
-                                {combo.requiredPackages.length > 1 ? "s" : ""}
-                              </div>
-                              {combo.engine.discountedPrice ? (
+                              {
+                                <div className="text-xs text-gray-500 mt-1">
+                                  +{combo.requiredPackages.length} package
+                                  {combo.requiredPackages.length > 1 ? "s" : ""}
+                                </div>
+                              }
+                              {considerDiscounts && combo.engine.discountedPrice ? (
                                 <>
                                   <span className="line-through text-xs text-gray-500">
                                     {combo.calculatedPrice.toLocaleString()} Ft
@@ -504,7 +462,7 @@ export default function CarComparisonPage() {
                                   </span>
                                 </>
                               ) : (
-                                <div className="text-blue-600 font-medium">
+                                <div className="text-violet-600 font-medium">
                                   {combo.calculatedPrice.toLocaleString()} Ft
                                 </div>
                               )}
@@ -518,6 +476,8 @@ export default function CarComparisonPage() {
                     ))}
                   </tr>
                 </thead>
+
+                
 
                 {/* Body */}
                 <tbody>
@@ -533,7 +493,7 @@ export default function CarComparisonPage() {
                         } ${isFirstInCategory ? "border-t-2 border-t-gray-400" : ""}`}
                         onClick={() => toggleRowHighlight(row.key)}
                       >
-                        <td className="sticky left-0 bg-white p-3 font-medium text-gray-900 border-r border-gray-300">
+                        <td className="sticky left-0 bg-white p-3 font-medium text-gray-900 border-r border-gray-300 z-10">
                           {isFirstInCategory && (
                             <div className="text-xs font-bold text-gray-600 mb-1">{row.category}</div>
                           )}
@@ -617,6 +577,65 @@ export default function CarComparisonPage() {
             </div>
           )}
         </div>
+
+        
+        {/* Filter Controls */}
+        <Card className="mb-6 p-4 gap-2">
+          <div className="flex flex-wrap items-center gap-4">
+            <Button onClick={resetFilters} variant="outline" className="flex items-center gap-2 bg-transparent">
+              <RotateCcw className="h-4 w-4" />
+              Reset Filters
+            </Button>
+
+            <div className="flex items-center space-x-2 mr-4">
+              <Checkbox 
+                id="hide-non-satisfying" 
+                checked={hideNonSatisfying} 
+                onCheckedChange={(checked) => setHideNonSatisfying(checked === true)} 
+              />
+              <label htmlFor="hide-non-satisfying" className="text-sm font-medium">
+                Hide non-satisfying variants
+              </label>
+            </div>
+            
+            <div className="flex items-center space-x-2">
+              <Checkbox 
+                id="consider-discounts" 
+                checked={considerDiscounts} 
+                onCheckedChange={(checked) => setConsiderDiscounts(checked === true)} 
+              />
+              <label htmlFor="consider-discounts" className="text-sm font-medium">
+                Consider discounts
+              </label>
+            </div>
+
+            {/* Numeric Range Sliders */}
+            <div className="flex flex-wrap gap-4">
+              {Object.entries(numericRanges).map(([key, range]) => (
+                <div key={key} className="min-w-[200px]">
+                  <label className="text-xs font-medium text-gray-700 mb-1 block">
+                    {parameterRows.find((row) => row.key === key)?.label || key}
+                  </label>
+                  <div className="px-2">
+                    <Slider
+                      value={range.current}
+                      onValueChange={(value) => updateNumericRange(key, value as [number, number])}
+                      min={range.min}
+                      max={range.max}
+                      step={(range.max - range.min) / 100}
+                      className="w-full"
+                    />
+                    <div className="flex justify-between text-xs text-gray-500 mt-1">
+                      <span>{range.current[0].toFixed(1)}</span>
+                      <span>{range.current[1].toFixed(1)}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Card>
+
       </div>
     </div>
   )
